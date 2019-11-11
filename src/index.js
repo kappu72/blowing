@@ -47,7 +47,7 @@ window.WindBlowing =  ({ server = "", topic = "weather/stations/firenze", port =
         dirArrow.setAttribute("transform", "rotate(" + (wind_dir).toFixed(2) + " 200 200)");
         lastWindDir = wind_dir;
         windSpeedTxt.innerHTML = wind_speed.toFixed(2) + " m/s";
-        windDirTxt.innerHTML = wind_dir.toFixed(2) + "°";
+        windDirTxt.innerHTML = wind_dir.toFixed(2) + "&deg;";
         dataTimestamp.innerHTML = date.format(timestamp, 'ddd MMM DD HH:mm:ss', true);
       }
 

@@ -56,7 +56,8 @@ export default () => {
         series: [{
             name: "Wind Speed",
             tooltip: {
-                valueSuffix: " m/s"
+                valueSuffix: " m/s",
+                valueDecimals: 2,
             },
             data: [],
             zIndex: 1,
@@ -64,7 +65,8 @@ export default () => {
         }, {
             name: "Wind direction",
             tooltip: {
-                valueSuffix: "Â°"
+                valueSuffix: "&deg;",
+                valueDecimals: 2,
             },
             data: [],
             yAxis: 1,
