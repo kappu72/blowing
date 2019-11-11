@@ -65,7 +65,8 @@ export default () => {
         }, {
             name: "Wind direction",
             tooltip: {
-                valueSuffix: "°",
+                useHTML: true,
+                valueSuffix: "&deg;",
                 valueDecimals: 2,
             },
             data: [],
