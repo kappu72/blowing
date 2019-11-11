@@ -19,6 +19,8 @@
     "compile": "webpack --watch --mode='development' -o dist/main.js ",
     "build": "webpack -o dist/main.js "
   },
-  "author": "",
+  "author": "kappu72@gmail.com",
+  "repository": {"type": "git",
+    "url": "https://github.com/kappu72/blowing.git"},
   "license": "ISC"
 }
