@@ -1,0 +1,24 @@
+{
+  "name": "navi-wind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.15",
+    "date-and-time": "^0.10.0",
+    "highcharts": "^7.2.1",
+    "mqtt": "^3.0.0",
+    "webpack": "^4.41.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compileMqtt": "webpack node_modules/mqtt/mqtt.js --output-library mqtt",
+    "compile": "webpack --watch --mode='development' -o dist/main.js ",
+    "build": "webpack -o dist/main.js "
+  },
+  "author": "",
+  "license": "ISC"
+}
