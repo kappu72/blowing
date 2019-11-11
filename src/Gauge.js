@@ -50,7 +50,7 @@ export default  () => {
     // the value axis
     yAxis: {
         min: 0,
-        max: 50,
+        max: 30,
 
         minorTickInterval: 'auto',
         minorTickWidth: 1,
@@ -72,17 +72,22 @@ export default  () => {
         },
         plotBands: [{
             from: 0,
-            to: 15,
+            to: 8,
             color: '#55BF3B' // green
         }, {
-            from: 15,
-            to: 30,
+            from: 8,
+            to: 14,
             color: '#DDDF0D' // yellow
         }, {
-            from: 30,
-            to: 50,
+            from: 14,
+            to: 20,
             color: '#DF5353' // red
-        }]
+        },{
+            from: 20,
+            to: 30,
+            color: '#9933CC' // purple
+        }
+    ]
     },
 
     series: [{
