@@ -111,9 +111,12 @@
   <script src="./dist/main.js"></script>
   <script>
     // Start up the app; [add server port optional topic and maxData]
-
-    WindBlowing({ server: "mqttserver", port: "mqttport" });
-
+     // Start up the app; [add server port optional topic and maxData]
+    if (location.protocol === 'https:') {
+      WindBlowing({ server: "wss://", port: 8383 , rejectUnauthorized: false});  
+    }else {
+      WindBlowing({ server: "ws://", port: 3333 });
+    }
 
   </script>
 
