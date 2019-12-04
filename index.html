@@ -176,9 +176,9 @@
     
     // Start up the app; [add server port optional topic and maxData]
     if (location.protocol === 'https:') {
-      WindBlowing({ server: "wss://167.114.230.71", port: 443 , topic: "device/ELP001/19070267/metrics/inst", rejectUnauthorized: false});  
+      WindBlowing({ server: "wss://167.114.230.71", options: {port: 443, rejectUnauthorized: false}} , "device/ELP001/19070267/metrics/inst");  
     }else {
-      WindBlowing({ server: "ws://167.114.230.71", port: 80 });
+      WindBlowing({ server: "ws://167.114.230.71", options: { port: 80 }} , "device/ELP001/19070267/metrics/inst");
     }
 
   </script>
