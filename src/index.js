@@ -5,7 +5,7 @@ import createWindRose from './WindRose';
 import createWindChart from './WindChart';
 
 
-window.WindBlowing =  ({ server = "", topic = "weather/stations/firenze", port = "", maxData = 300}) =>
+window.WindBlowing =  ({ server = "", topic = "weather/stations/firenze", port = "", maxData = 300, rejectUnauthorized}) =>
   {
     const Gouge = createGauge();
     const WindRose = createWindRose();
@@ -17,12 +17,14 @@ window.WindBlowing =  ({ server = "", topic = "weather/stations/firenze", port =
     const windDirTxt = document.getElementById("windDirTxt");
     const dataTimestamp = document.getElementById("dataTimestamp");
 
-    const client = mqtt.connect(server, { port });
-
+    console.log(server, port);
+    const client = mqtt.connect(server, { port, rejectUnauthorized});
+    
     client.on('connect', function () {
+      console.log("Connesso al server");
       client.subscribe(topic, function (err) {
         if (!err) {
-          console.log("Connesso il vento inizia a soffiare");
+          console.log("Stazione sottoscritta il vento inizia a soffiare");
         }else {
           console.log("Impossibile connettersi il vento non soffia", err);
         }
@@ -32,7 +34,8 @@ window.WindBlowing =  ({ server = "", topic = "weather/stations/firenze", port =
 
 
     let lastWindDir = 0;
-    client.on("message", function (topic, payload) {
+    client.on("message", function (t, payload) {
+      console.log(t, topic, payload)
       if (topic === topic) {
         const values = JSON.parse(payload);
         const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
