@@ -1,18 +1,57 @@
 <html>
 
-<head>
-  <title>Mqtt Wind</title>
-</head>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <style>
+
+
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+.txt {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: right; 
+  padding: 14px 16px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+
+/* Change background on mouse-over */ 
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+
   body {
+    margin-top: 100px; /* Add a top margin to avoid content overlay */
     background-color: black;
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
     align-items: center;
   }
+
 
   .windContainer {
     background: transparent;
@@ -70,6 +109,26 @@
   }
 </style>
 
+<head>
+  <title>PENDENNIS SHIPYARD  | Real Time Wind Data </title>  
+
+
+	<div class="navbar">
+	
+	    <div class="logo">
+        <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring"><img src="img/Logo-Navimeteo_2.png" alt="logo" target="_blank"> </a>   
+    </div>
+    <div class="txt">PENDENNIS SHIPYARD </br>50&deg;09&#39;13&#34; N   5&deg;03&#39;09&#34; W</br>Real Time Wind Data</div>    
+</div>
+	 
+   
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script> 
+  
+</head>
+
+
+
 <body>
   <div class="upperRow">
     <div class="windContainer" id="windSpeedContainer"></div>
@@ -110,10 +169,13 @@
   <div class="wind-chart-container" id="windChartContainer"> </div>
   <script src="./dist/main.js"></script>
   <script>
+    
     // Start up the app; [add server port optional topic and maxData]
-
-    WindBlowing({ server: "mqttserver", port: "mqttport" });
-
+    if (location.protocol === 'https:') {
+      WindBlowing({ server: "wss://", port: 8383 , topic: "device/ELP001/19070267/metrics/inst", rejectUnauthorized: false});  
+    }else {
+      WindBlowing({ server: "ws://", port: 3333 , topic: "device/ELP001/19070267/metrics/inst"});
+    }
 
   </script>
 
