@@ -39,8 +39,8 @@ window.WindBlowing =  function (config, topic, maxData = 300)
       if (t === topic) {
         const values = JSON.parse(payload);
         // const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-        const wind_speed = values.inst.wind_speed;
-        const wind_dir = values.inst.wind_dir;
+        const wind_speed = values.inst[4];
+        const wind_dir = values.inst[5];
         const time = values.time;
         // const point = Gouge.series[0].points[0];
         const timestamp = new Date(time);
