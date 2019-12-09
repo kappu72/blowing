@@ -5,7 +5,7 @@ import createWindRose from './WindRose';
 import createWindChart from './WindChart';
 
 
-window.WindBlowing =  (config, topic, maxData = 300) =>
+window.WindBlowing =  function (config, topic, maxData = 300) 
   {
     const Gouge = createGauge();
     const WindRose = createWindRose();

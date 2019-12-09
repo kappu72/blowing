@@ -4,7 +4,7 @@
  let seconds = 600;
 let minutesText;
     let minutes = seconds / 60;
-export default () => {
+export default function () {
     return Highcharts.chart('windChartContainer', {
         chart: {
             backgroundColor: 'rgba(0,0,0,0)',

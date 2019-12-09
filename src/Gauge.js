@@ -1,7 +1,7 @@
 const Highcharts = window.Highcharts;
 
 
-export default  () => {
+export default  function () {
     return Highcharts.chart('windSpeedContainer', {
     chart: {
         type: 'gauge',
