@@ -10,11 +10,13 @@
 
 /* The navigation bar */
 .navbar {
+  z-index: 9999;   
   overflow: hidden;
   background-color: #333;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  
 }
 
 /* Links inside the navbar */
@@ -25,9 +27,10 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+
 }
 
-
+  
 .txt {
   float: right;
   display: block;
@@ -122,10 +125,7 @@
 	 
    
 
-  
-
-
-
+ 
 <body>
     <div class="navbar">
 	
@@ -176,9 +176,9 @@
     
     // Start up the app; [add server port optional topic and maxData]
     if (location.protocol === 'https:') {
-      WindBlowing({ server: "wss://167.114.230.71", options: {port: 443, rejectUnauthorized: false}} , "device/ELP001/19070267/metrics/inst");  
+      WindBlowing({ server: "wss://dev.retemet.com", options: {port: 443, rejectUnauthorized: false}} , "device/ELP001/19070267/metrics/inst");  
     }else {
-      WindBlowing({ server: "ws://167.114.230.71", options: { port: 80 }} , "device/ELP001/19070267/metrics/inst");
+      WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 }} , "device/ELP001/19070267/metrics/inst");
     }
 
   </script>

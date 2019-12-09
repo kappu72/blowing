@@ -22,7 +22,7 @@ export default () => {
         tooltip: {
             crosshairs: [true, true],
             shared: true,
-            xDateFormat: "%d.%m.%Y %H:%M:%S"
+            xDateFormat: "%d.%m.%Y %H:%M:%S"    
         },
         xAxis: {
             type: "datetime"
@@ -67,7 +67,7 @@ export default () => {
             tooltip: {
                 useHTML: true,
               //  valueSuffix: "&deg;", 
-			     valueSuffix: "°",   
+			     valueSuffix: "°",     
                 valueDecimals: 2,
             },
             data: [],
