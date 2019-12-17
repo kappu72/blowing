@@ -1,6 +1,6 @@
 const Highcharts = window.Highcharts;
 
-export default () => {
+export default (data = []) => {
     return Highcharts.chart('windRoseContainer', {
 
         chart: {
@@ -109,7 +109,7 @@ export default () => {
     series: [{
         // specific options for this series instance
         type: 'scatter',
-        data: [],
+        data,
         tooltip: {
             valueSuffix: ' m/s'
         }

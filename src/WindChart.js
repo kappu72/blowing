@@ -4,7 +4,7 @@
  let seconds = 600;
 let minutesText;
     let minutes = seconds / 60;
-export default () => {
+export default (speedData = [], dirData = []) => {
     return Highcharts.chart('windChartContainer', {
         chart: {
             backgroundColor: 'rgba(0,0,0,0)',
@@ -59,7 +59,7 @@ export default () => {
                 valueSuffix: " m/s",
                 valueDecimals: 2,
             },
-            data: [],
+            data: speedData,
             zIndex: 1,
             color: '#00acec'
         }, {
@@ -70,7 +70,7 @@ export default () => {
 			     valueSuffix: "°",     
                 valueDecimals: 2,
             },
-            data: [],
+            data: dirData,
             yAxis: 1,
             marker: {
                 enabled: true, // makes series a path when disabled

@@ -4,18 +4,39 @@ import createGauge from './Gauge';
 import createWindRose from './WindRose';
 import createWindChart from './WindChart';
 
+function initSeries (data= [] ) {
 
-window.WindBlowing =  (config, topic, maxData = 300) =>
+return data.slice(0).reverse().reduce(function (acc, values) {
+    const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
+    const time = values.time;
+    const timestamp = new Date(time);
+    acc.windChartS0.push([timestamp.getTime(), wind_speed]);
+    acc.windChartS1.push([timestamp.getTime(), wind_dir]);
+    acc.WindRose.push({ x: wind_dir, y: wind_speed, date: timestamp });
+    return acc
+}, {windChartS0: [], windChartS1: [], WindRose: []});  
+
+
+}
+
+
+window.WindBlowing =  (config, topic, initData = [], maxData = 300) =>
   {
-    const Gouge = createGauge();
-    const WindRose = createWindRose();
-    const WindChart = createWindChart();
+
+    
+    const initValues = initSeries(initData);
+    const initSpeed = initData.length > 0 ? initValues.windChartS0[0][1] : 0;
+    const Gouge = createGauge([initSpeed]);
+    const WindRose = createWindRose(initValues.WindRose);
+    const WindChart = createWindChart(initValues.windChartS0, initValues.windChartS1);
 
     // const dirArrow = SVG('#dir_arrow');
     const dirArrow = document.querySelector('#dir_arrow');
     const windSpeedTxt = document.getElementById("windSpeedTxt");
     const windDirTxt = document.getElementById("windDirTxt");
     const dataTimestamp = document.getElementById("dataTimestamp");
+
+
 
     console.log(config, topic, maxData);
     const client = mqtt.connect(config.server, config.options);
@@ -47,7 +68,7 @@ window.WindBlowing =  (config, topic, maxData = 300) =>
         WindChart.series[1].addPoint([timestamp.getTime(), wind_dir], true, slice, true);
         WindRose.series[0].addPoint({ x: wind_dir, y: wind_speed, date: timestamp }, true, slice, true);
         point.update(wind_speed);
-        dirArrow.setAttribute("transform", "rotate(" + (wind_dir).toFixed(2) + " 200 200)");
+        // dirArrow.setAttribute("transform", "rotate(" + (wind_dir).toFixed(2) + " 200 200)");
         lastWindDir = wind_dir;
         windSpeedTxt.innerHTML = wind_speed.toFixed(2) + " m/s";
         windDirTxt.innerHTML = wind_dir.toFixed(2) + "°";

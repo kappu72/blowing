@@ -1,7 +1,7 @@
 const Highcharts = window.Highcharts;
 
 
-export default  () => {
+export default  (data = [0]) => {
     return Highcharts.chart('windSpeedContainer', {
     chart: {
         type: 'gauge',
@@ -92,7 +92,7 @@ export default  () => {
 
     series: [{
         name: 'Speed',
-        data: [0],
+        data,
         tooltip: {
             valueSuffix: ' m/s',
             valueDecimals: 2,
