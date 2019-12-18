@@ -83,25 +83,7 @@ export default (speedData = [], dirData = []) => {
                 }
             },
             color: '#fefe00'
-        }],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 340
-                },
-                chartOptions: {
-                    yAxis: [{ // first axis
-                        title: {
-                            text: null
-                        }
-                    }, { // secondary axis
-                        title: {
-                            text: null
-                        }
-                    }]
-                }
-            }]
-        },
+        }]
         
     });
 

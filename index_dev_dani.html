@@ -3,18 +3,21 @@
 <head>
   <title>PENDENNIS SHIPYARD | Real Time Wind Data </title>
   <style>
+    body{
+      margin:0px;
+      background-color: black;
+      }
     /* The navigation bar */
     .navbar {
       z-index: 9999;
       overflow: hidden;
       background-color: #333;
-      position: fixed;
+      position: sticky;
       /* Set the navbar to fixed position */
       top: 0;
       /* Position the navbar at the top of the page */
       width: 100%;
       /* Full width */
-
     }
 
     /* Links inside the navbar */
@@ -49,80 +52,165 @@
     }
 
 
-    body {
-      margin-top: 100px;
-      /* Add a top margin to avoid content overlay */
+    .app-container {
+      padding: 2px;
+      padding-top: 20px;
       background-color: black;
       display: flex;
-      flex-direction: column;
-      padding-bottom: 5px;
-      align-items: center;
+      flex-direction: row;
+      /* align-items: center; */
+      width: 100vw;
+      min-height: 100vh;
     }
-
-
-    .windContainer {
-      background: transparent;
-      width: 350px;
-      height: 400px;
-    }
-
-    .wind-chart-container {
-      background: transparent;
-      width: 80%;
-      height: auto;
-      margin: auto;
-    }
-
-    .app-container {
+   
+    .fore-container, .obs-container {
+      margin:10px;
       display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .obs-container {
+      flex: 1 1 auto;
+    }
+    .fore-container {
+      flex: 1 1 auto;
     }
 
     .upperRow {
-      font-stretch: expanded;
+      /* padding-top: 30px; */
+      padding-bottom: 30px;
       display: flex;
-
+      justify-content: center;
+      overflow: hidden;
+      /* flex-wrap: wrap; */
     }
 
     @media screen and (max-width: 992px) {
       .upperRow {
-        flex-direction: column;
+        /* flex-direction: column; */
       }
     }
 
-    .cardinal {
-      fill: white;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 15px;
-      font-weight: 300;
+    .windContainer {
+      background: transparent;
+      min-width: 350px;
+      min-height: 380px;
+      flex: 1 1 auto;
+      overflow: hidden;
     }
 
-    .cardinal .small {
-      font-size: 15px;
+    .wind-chart-container {
+      background: transparent;
+      /* width: 80%; */
+      min-height: 380px;
+      flex: 1 1 auto;
+      /* display: flex; */
+    }
+    .imgsat {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      max-width: 650px;
+      /* max-height: 402px; */
+      align-self: center;
+      object-fit: cover;
     }
 
-    .circle {
-      fill: none;
-      stroke: white;
-      stroke-width: 4px;
+
+    iframe {
+      border: none;
+      overflow: hidden;
+      padding-top: 5%;
+      flex: 1 1 auto;
+      max-height: 400px;
+      display: flex;
     }
 
-    .fill-white {
-      fill: white;
-    }
+    @media screen and (max-width: 1730px) {
+      .app-container{
+        flex-direction: column;
+      }
+      .fore-container {
+        flex-direction: row-reverse;
+        min-height: 400px;
+      }
+      iframe {
+        height: auto;
+        padding: 20px;
+        
+      }
+      .imgsat {
+        height: auto;
+        
+        margin: 20px;
+        
+      }
+      
+    }    
 
-    .fill-blue {
-      fill: #00BCD4;
-    }
+    @media screen and (max-width: 1380px) {
+      
+      
+      .imgsat {
+        max-width: 450px;
+        align-self: unset;
+      }
+      
+    }  
 
-    .arrow {
-      stroke: #00BCD4;
-      fill: none;
-      stroke-width: 2px;
-    }
+    @media screen and (max-width: 1200px) {
+      
+      .upperRow {
+        /* flex-wrap: wrap; */
+      }
+      .imgsat {
+        max-width: 450px
+      }
+      .windContainer {
+      
+      min-width: 300px;
+      }
+    }  
+    @media screen and (max-width: 1100px) {
+      
+      .fore-container {
+        flex-direction: column;
+      }
+      .imgsat{
+        align-self: center;
+        max-width: 95%;
+        }
+        iframe {
+        flex: 1 1 400px;
+        padding: 20px;
+        
+      }
+    }  
+    @media screen and (max-width: 980px) {
+      
+      .upperRow {
+        flex-direction: column;
+      }
+      .windContainer{
+        flex: 1 1 400px;
+        align-self: center;
+      }
+    }  
+    @media screen and (max-width: 700px) {
+      
+      .txt {
+        font-size: 15px;
+      }
+      .navbar img{
+        width: 250px;
+        object-fit: scale-down;
+      }
+
+    }  
 
     .windLabels {
-      padding-top: 50px;
-      padding-left: 80px;
+      padding-top: 0px;
+      padding-left: 20;
       display: flex;
       flex-direction: column;
     }
@@ -193,24 +281,14 @@
     }
 
 
-    .imgsat {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-      max-width: 650px;
+   
+
+    
+    .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
+      font-size: 14px !important;
     }
-
-    .sat {
-      padding-top: 3%;
-    }
-
-
-
-    .iframe {
-      position: relative;
-      overflow: hidden;
-      padding-top: 3%;
-    }
+    
+    
   </style>
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -237,7 +315,7 @@
   <div class="app-container">
     <div class="obs-container">
       <div class="upperRow">
-        <div class="windContainer">
+        <div class="windContainer" style="min-width: 255px;">
 
           <div class="windLabels">
 
@@ -255,6 +333,9 @@
               <div class="windSpeed" id="maxWindSpeedTxt"></div>
               <div class="windTitle">Wind Direction</div>
               <div class="windDir" id="maxWindDirTxt"></div>
+              <div style="padding-right: 20px;">
+                <div class="data" id="maxDataTimestamp"></div>
+              </div>
           </div>
         </div>
         <div class="windContainer" id="windSpeedContainer"></div>
@@ -271,14 +352,14 @@
 
 
     <div class="fore-container">
-      <div class="sat">
+      
         <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/falmouth_haven/sat/sat.gif"
           class="imgsat" alt="sat">
-      </div>
-      <div class="iframe">
-        <iframe scrolling="no" frameborder="0" height="400" width="100%"
+      
+      
+        <iframe scrolling="no"
           src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=51.500702&lng=0.523700"></iframe>
-      </div>
+      
 
 
     </div>
@@ -293,9 +374,9 @@
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics/inst", data);
+        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics", data);
       } else {
-        WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/inst", data);
+        WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/#", data);
       }
     });
     // Start up the app; [add server port optional topic and maxData]
