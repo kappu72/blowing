@@ -1,0 +1,328 @@
+<html>
+
+  <head>
+    <title>PENDENNIS SHIPYARD  | Real Time Wind Data </title>  
+
+
+
+<style>
+
+
+/* The navigation bar */
+.navbar {
+  z-index: 9999;   
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+}
+
+  
+.txt {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: right; 
+  padding: 14px 16px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+
+/* Change background on mouse-over */ 
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+
+  body {
+    margin-top: 100px; /* Add a top margin to avoid content overlay */
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    align-items: center;
+  }
+
+
+  .windContainer {
+    background: transparent;
+    width: 350;
+    height: 400;
+  }
+
+  .wind-chart-container {
+    background: transparent;
+    width: 80%;
+    height: auto;
+    margin: auto;
+  }
+.app-container {
+  display:flex;
+}
+  .upperRow {
+    font-stretch: expanded;
+    display: flex;
+    
+  }
+  @media screen and (max-width: 992px) {
+    .upperRow {
+      flex-direction: column;
+  }
+}
+
+  .cardinal {
+    fill: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .cardinal .small {
+    font-size: 15px;
+  }
+
+  .circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 4px;
+  }
+
+  .fill-white {
+    fill: white;
+  }
+
+  .fill-blue {
+    fill: #00BCD4;
+  }
+
+  .arrow {
+    stroke: #00BCD4;
+    fill: none;
+    stroke-width: 2px; 
+  }
+
+   .windLabels { 
+   padding-top: 50px;
+   padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+  }
+ 
+
+
+.boxTitle {
+ font-family: "Arial Black", Gadget, sans-serif;
+ font-size: 17px; 
+ letter-spacing: 2px;
+ word-spacing: 2px;
+ color: #FFFFFF;  
+ font-weight: normal;
+ text-decoration: none;
+ font-style: normal;
+ font-variant: normal;
+ text-transform: none;
+  }    
+ 
+.windTitle {
+ font-family: "Arial Black", Gadget, sans-serif;
+ font-size: 15px;
+ letter-spacing: 2px;
+ word-spacing: 2px;
+ color: #666666; 
+ font-weight: normal;
+ text-decoration: none;
+ font-style: normal;
+ font-variant: normal;
+ text-transform: none;
+  }     
+  
+
+.windSpeed {
+ font-family: "Arial Black", Gadget, sans-serif;
+ font-size: 30px;
+ letter-spacing: 2px; 
+ word-spacing: 2px;
+ color: #00ACEC; 
+ font-weight: normal;
+ text-decoration: none;
+ font-style: normal;
+ font-variant: normal;
+ text-transform: none;
+  }
+  
+.windDir{
+ font-family: "Arial Black", Gadget, sans-serif;
+ font-size: 30px;
+ letter-spacing: 2px; 
+ word-spacing: 2px;
+ color: #FEFE00;  
+ font-weight: normal;
+ text-decoration: none;
+ font-style: normal;
+ font-variant: normal;
+ text-transform: none;
+ }
+  
+
+.data {
+ font-family: "Arial Black", Gadget, sans-serif;
+ font-size: 15px;
+ letter-spacing: 2px; 
+ word-spacing: 2px;
+ color: FFFFFF;  
+ font-weight: normal;
+ text-decoration: none;
+ font-style: normal;
+ font-variant: normal;
+ text-transform: none;
+}       
+
+
+.imgsat{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 650px;  
+}
+
+.sat{
+padding-top: 3%;     
+}
+
+
+
+.iframe {
+    position: relative;
+    overflow: hidden;
+    padding-top: 3%;   
+}
+  
+</style>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script> 
+
+</head>
+	
+
+ 
+<body>
+    <div class="navbar">
+	
+        <div class="logo">
+          <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring"><img src="img/Logo-Navimeteo_2.png" alt="logo" target="_blank"> </a>   
+      </div>
+      <div class="txt">PENDENNIS SHIPYARD </br>50&deg;09&#39;13&#34; N   5&deg;03&#39;09&#34; W</br>Real Time Wind Data</div>    
+  </div>
+  
+  
+  
+  
+  <div class="app-container">
+  <div class="obs-container">
+    <div class="upperRow">
+      <div class="windContainer">
+          
+<div class="windLabels"> 
+       
+              <div class="boxTitle">Current</div>
+              <div class="windTitle">Wind Speed</div>
+              <div class="windSpeed"    id="windSpeedTxt"></div> 
+              <div class="windTitle">Wind Direction</div>
+              <div class="windDir"  id="windDirTxt"></div>
+	         <div style="padding-right: 20px;">
+            <div class="data" id="dataTimestamp"></div> 
+			      <div class="boxTitle">Max Last Hour</div>   
+              <div class="windTitle">Wind Speed</div>
+              <div class="windSpeed"    id="windSpeedTxt"></div> 
+              <div class="windTitle">Wind Direction</div>
+              <div class="windDir"  id="windDirTxt"></div>
+			
+			
+			
+			
+            </div>
+</div> 
+
+
+
+
+
+
+		
+</div>  
+          
+     
+	 
+	 
+
+	
+    <div class="windContainer" id="windSpeedContainer"></div>
+    <div class="windContainer" id="windRoseContainer"></div>
+	
+  </div>
+	
+	
+
+  
+  <div class="wind-chart-container" id="windChartContainer"> </div>
+  
+ </div> 
+
+  
+  <div class="fore-container"> 
+  
+  
+  <div class="sat"> 
+  <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/falmouth_haven/sat/sat.gif" class="imgsat" alt="sat">  
+  </div> 
+ 
+    
+   
+ <div class="iframe">  
+  <iframe scrolling="no" frameborder="0" height="400" width="100%"  src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=51.500702&lng=0.523700"></iframe>
+  </div> 
+  
+  
+  </div>
+
+
+</div>
+  
+  
+  <script src="./dist/main.js"></script>
+  <script>
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php').then(function(response) {
+      return response.json();
+    }).then(function (data = []) {
+      if (location.protocol === 'https:') {
+      WindBlowing({ server: "wss://dev.retemet.com", options: {port: 443, rejectUnauthorized: false}} , "device/ELP001/19070267/metrics/inst", data);  
+    }else {
+      WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 }} , "device/ELP001/19070267/metrics/inst", data);
+    }
+});
+    // Start up the app; [add server port optional topic and maxData]
+    
+
+  </script>
+
+</body>
+
+</html>
