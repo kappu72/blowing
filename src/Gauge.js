@@ -65,7 +65,10 @@ export default  (data = [0]) => {
         tickColor: '#666',
         labels: {
             step: 2,
-            rotation: 'auto'
+            rotation: 'auto',
+            style: {
+                    color: "#000000"
+            },
         },
         title: {
             text: 'm/s'

@@ -78,23 +78,18 @@
 
     .upperRow {
       /* padding-top: 30px; */
-      padding-bottom: 30px;
+      /* padding-bottom: 30px; */
       display: flex;
       justify-content: center;
       overflow: hidden;
       /* flex-wrap: wrap; */
     }
 
-    @media screen and (max-width: 992px) {
-      .upperRow {
-        /* flex-direction: column; */
-      }
-    }
 
     .windContainer {
       background: transparent;
       min-width: 350px;
-      min-height: 380px;
+      /* min-height: 20px; */
       flex: 1 1 auto;
       overflow: hidden;
     }
@@ -102,101 +97,15 @@
     .wind-chart-container {
       background: transparent;
       /* width: 80%; */
-      min-height: 380px;
+      min-height: 600px;
       flex: 1 1 auto;
       /* display: flex; */
+      margin: 30px;
     }
-    .imgsat {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-      max-width: 650px;
-      /* max-height: 402px; */
-      align-self: center;
-      object-fit: cover;
-    }
+    
 
 
-    iframe {
-      border: none;
-      overflow: hidden;
-      padding-top: 5%;
-      flex: 1 1 auto;
-      max-height: 400px;
-      display: flex;
-    }
-
-    @media screen and (max-width: 1730px) {
-      .app-container{
-        flex-direction: column;
-      }
-      .fore-container {
-        flex-direction: row-reverse;
-        min-height: 400px;
-      }
-      iframe {
-        height: auto;
-        padding: 20px;
-        
-      }
-      .imgsat {
-        height: auto;
-        
-        margin: 20px;
-        
-      }
-      
-    }    
-
-    @media screen and (max-width: 1380px) {
-      
-      
-      .imgsat {
-        max-width: 450px;
-        align-self: unset;
-      }
-      
-    }  
-
-    @media screen and (max-width: 1200px) {
-      
-      .upperRow {
-        /* flex-wrap: wrap; */
-      }
-      .imgsat {
-        max-width: 450px
-      }
-      .windContainer {
-      
-      min-width: 300px;
-      }
-    }  
-    @media screen and (max-width: 1100px) {
-      
-      .fore-container {
-        flex-direction: column;
-      }
-      .imgsat{
-        align-self: center;
-        max-width: 95%;
-        }
-        iframe {
-        flex: 1 1 400px;
-        padding: 20px;
-        
-      }
-    }  
-    @media screen and (max-width: 980px) {
-      
-      .upperRow {
-        flex-direction: column;
-      }
-      .windContainer{
-        flex: 1 1 400px;
-        align-self: center;
-      }
-    }  
-    @media screen and (max-width: 700px) {
+  @media screen and (max-width: 700px) {
       
       .txt {
         font-size: 15px;
@@ -282,18 +191,21 @@
 
 
    
-
+    .highcharts-range-selector-buttons txt tspan {
+      color: white;
+    }
     
     .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
       font-size: 14px !important;
-      /* fill: black !important; */
     }
     
     
   </style>
 
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+   <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 
 </head>
 
@@ -328,56 +240,25 @@
               <div style="padding-right: 20px;">
                 <div class="data" id="dataTimestamp"></div>
               </div>
-
-              <div class="boxTitle">Max Last Hour</div>
-              <div class="windTitle">Wind Speed</div>
-              <div class="windSpeed" id="maxWindSpeedTxt"></div>
-              <div class="windTitle">Wind Direction</div>
-              <div class="windDir" id="maxWindDirTxt"></div>
-              <div style="padding-right: 20px;">
-                <div class="data" id="maxDataTimestamp"></div>
-              </div>
           </div>
         </div>
-        <div class="windContainer" id="windSpeedContainer"></div>
-        <div class="windContainer" id="windRoseContainer"></div>
 
       </div>
-
-
-
-
-      <div class="wind-chart-container" id="windChartContainer"> </div>
+      <div class="wind-chart-container" id="windHistoryChartContainer"> </div>
 
     </div>
-
-
-    <div class="fore-container">
-      
-        <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/falmouth_haven/sat/sat.gif"
-          class="imgsat" alt="sat">
-      
-      
-        <iframe scrolling="no"
-          src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=51.500702&lng=0.523700"></iframe>
-      
-
-
-    </div>
-
-
   </div>
 
 
   <script src="./dist/main.js"></script>
   <script>
-    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php').then(function (response) {
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php').then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics#", data);
+        WindHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics/#", data);
       } else {
-        WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/#", data);
+        WindHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/#", data);
       }
     });
     // Start up the app; [add server port optional topic and maxData]
