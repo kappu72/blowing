@@ -13,7 +13,7 @@ let maxDateL = document.getElementById("maxDataTimestamp");
 export const update = (speed = 0, dir = 0, time = new Date(), format = _format, utc = _utc) => {
 
     if(speedL && speed.toFixed) 
-        speedL.innerHTML = speed.toFixed(2) + " kn";
+        speedL.innerHTML = speed.toFixed(2) + " kts";
     if(dirL && dir.toFixed)
         dirL.innerHTML = dir.toFixed(2) + "°";
     if(dateL && isDate(time)) dateL.innerHTML = date.format(new Date(time), format, utc);
@@ -23,7 +23,7 @@ export const update = (speed = 0, dir = 0, time = new Date(), format = _format, 
 export const updateMax = (speed = 0, dir = 0, time = new Date(), format = _format, utc = _utc) => {
 
     if(maxSpeedL && speed.toFixed) 
-        maxSpeedL.innerHTML = speed.toFixed(2) + " kn";
+        maxSpeedL.innerHTML = speed.toFixed(2) + " kts";
     if(maxDirL && dir.toFixed)
         maxDirL.innerHTML = dir.toFixed(2) + "°";
     if(maxDateL && isDate(time)) maxDateL.innerHTML = date.format(new Date(time), format, utc);

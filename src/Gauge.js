@@ -14,6 +14,12 @@ export default  (data = [0]) => {
     title: {
         text: ''
     },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                color: 'rgba(0,0,0,1)'
+            }
+        }},
     pane: {
         startAngle: -150,
         endAngle: 150,
@@ -50,7 +56,7 @@ export default  (data = [0]) => {
     // the value axis
     yAxis: {
         min: 0,
-        max: 30,
+        max: 52,
 
         minorTickInterval: 'auto',
         minorTickWidth: 1,
@@ -71,23 +77,23 @@ export default  (data = [0]) => {
             },
         },
         title: {
-            text: 'kn'
+            text: 'kts'
         },
         plotBands: [{
             from: 0,
-            to: 8,
+            to: 21,
             color: '#55BF3B' // green
         }, {
-            from: 8,
-            to: 14,
+            from: 21,
+            to: 28,
             color: '#DDDF0D' // yellow
         }, {
-            from: 14,
-            to: 20,
+            from: 28,
+            to: 40,
             color: '#DF5353' // red
         },{
-            from: 20,
-            to: 30,
+            from: 40,
+            to: 52,
             color: '#9933CC' // purple
         }
     ]
@@ -97,12 +103,12 @@ export default  (data = [0]) => {
         name: 'Speed',
         data,
         tooltip: {
-            valueSuffix: ' kn',
+            valueSuffix: ' kts',
             valueDecimals: 2,
         }, 
         dataLabels: {
            formatter: function() {
-               return Highcharts.numberFormat(this.y, 2) + " kn"
+               return Highcharts.numberFormat(this.y, 2) + " kts"
            }
         }
     }]
