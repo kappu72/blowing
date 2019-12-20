@@ -71,7 +71,7 @@ export default  (data = [0]) => {
             },
         },
         title: {
-            text: 'm/s'
+            text: 'kn'
         },
         plotBands: [{
             from: 0,
@@ -97,12 +97,12 @@ export default  (data = [0]) => {
         name: 'Speed',
         data,
         tooltip: {
-            valueSuffix: ' m/s',
+            valueSuffix: ' kn',
             valueDecimals: 2,
         }, 
         dataLabels: {
            formatter: function() {
-               return Highcharts.numberFormat(this.y, 2) + " m/s"
+               return Highcharts.numberFormat(this.y, 2) + " kn"
            }
         }
     }]

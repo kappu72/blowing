@@ -32,7 +32,7 @@ export default (speedData = [], dirData = []) => {
                 text: "Wind speed"
             },
             labels: {
-                format: "{value} m/s"
+                format: "{value} kn"
             },
             allowDecimals: true,
             opposite: true
@@ -56,7 +56,7 @@ export default (speedData = [], dirData = []) => {
         series: [{
             name: "Wind Speed",
             tooltip: {
-                valueSuffix: " m/s",
+                valueSuffix: " kn",
                 valueDecimals: 2,
             },
             data: speedData,

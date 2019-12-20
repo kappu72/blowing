@@ -27,7 +27,7 @@ export default (data = []) => {
             useHTML: true,
             headerFormat: "<small>{point.point.date:%d-%m-%Y %H:%M:%S}</small><br>",
             pointFormatter: function () {
-                return "Wind speed: <b>" + Highcharts.numberFormat(this.y, 2) + " m/s</b><br>"
+                return "Wind speed: <b>" + Highcharts.numberFormat(this.y, 2) + " kn</b><br>"
                     + "Wind direction: <b>" + Highcharts.numberFormat(this.x, 2) + "&deg;</b>";
             }
         },
@@ -101,7 +101,7 @@ export default (data = []) => {
         showLastLabel: true,
         labels: {
             formatter: function () {
-                return Highcharts.numberFormat(this.value,0) + " m/s";
+                return Highcharts.numberFormat(this.value,0) + " kn";
             }
         },
         reversedStacks: false
@@ -111,7 +111,7 @@ export default (data = []) => {
         type: 'scatter',
         data,
         tooltip: {
-            valueSuffix: ' m/s'
+            valueSuffix: ' kn'
         }
     }],
 

@@ -65,14 +65,14 @@ const prepareData =  (data=[]) => {
                 text: 'Wind speed'
             },
             labels: {
-                format: '{value} m/s'
+                format: '{value} kn'
             },
             allowDecimals: true,
             opposite: true
         }, {
             // title: {text: 'Wind speed max'},
             labels: {
-                format: '{value} m/s'
+                format: '{value} kn'
             },
             allowDecimals: true,
             opposite: false
@@ -110,7 +110,7 @@ const prepareData =  (data=[]) => {
             name: 'Wind speed',
             tooltip: {
                 valueDecimals: 1,
-                valueSuffix: ' m/s'
+                valueSuffix: ' kn'
             },
             color: '#00acec'
         }, {
