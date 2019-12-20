@@ -55,7 +55,7 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
   
   Wind.update(initSpeed,initSpeedDir, initSpeedDate);
 
-  Wind.updateMax(max.speed, max.dir, new Date(max.time || now));
+  Wind.updateMax(max.speed, max.dir, new Date(max.time || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
