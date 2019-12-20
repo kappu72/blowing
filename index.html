@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+  <meta charset="utf-8"/>
   <title>PENDENNIS SHIPYARD | Real Time Wind Data </title>
   <style>
     body{
@@ -210,17 +212,30 @@
 
     .windLabels {
       padding-top: 0px;
-      padding-left: 20;
+      padding-left: 20px;
       display: flex;
       flex-direction: column;
     }
+	
+	
+hr {
+    background-color:#999;
+    border-width:0;
+    color:#999;
+    height:1px;
+    line-height:0;
+    margin: 0.5em 0;
+    text-align: center;
+} 
+
+
 
     .boxTitle {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 17px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #FFFFFF;
+      color: #FFCC99; 
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
@@ -244,7 +259,7 @@
 
     .windSpeed {
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 30px;
+      font-size: 30px; 
       letter-spacing: 2px;
       word-spacing: 2px;
       color: #00ACEC;
@@ -253,7 +268,7 @@
       font-style: normal;
       font-variant: normal;
       text-transform: none;
-    }
+    } 
 
     .windDir {
       font-family: "Arial Black", Gadget, sans-serif;
@@ -272,7 +287,7 @@
       font-size: 15px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: FFFFFF;
+      color: #FFFFFF;
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
@@ -298,19 +313,19 @@
 </head>
 
 
-
+  
 <body>
   <div class="navbar">
 
     <div class="logo">
-      <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring"><img
-          src="img/Logo-Navimeteo_2.png" alt="logo" target="_blank"> </a>
+      <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
+          src="img/Logo-Navimeteo_2.png" alt="logo" > </a>
     </div>
-    <div class="txt">PENDENNIS SHIPYARD </br>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W</br>Real Time Wind Data
+    <div class="txt">PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data
     </div>
   </div>
 
-
+ 
 
 
   <div class="app-container">
@@ -318,9 +333,9 @@
       <div class="upperRow">
         <div class="windContainer" style="min-width: 255px;">
 
-          <div class="windLabels">
+          <div class="windLabels"> 
 
-              <div class="boxTitle">Current</div>
+              <div class="boxTitle">Current <a href="history.html" target="_blank">(>Data Archive)</a></div> 
               <div class="windTitle">Wind Speed</div>
               <div class="windSpeed" id="windSpeedTxt"></div>
               <div class="windTitle">Wind Direction</div>
@@ -328,14 +343,15 @@
               <div style="padding-right: 20px;">
                 <div class="data" id="dataTimestamp"></div>
               </div>
-
-              <div class="boxTitle">Max Last Hour</div>
+                 <hr> 
+              <div class="boxTitle">Max Last Hour</div> 
               <div class="windTitle">Wind Speed</div>
               <div class="windSpeed" id="maxWindSpeedTxt"></div>
               <div class="windTitle">Wind Direction</div>
               <div class="windDir" id="maxWindDirTxt"></div>
               <div style="padding-right: 20px;">
-                <div class="data" id="maxDataTimestamp"></div>
+              <div class="data" id="maxDataTimestamp"></div>      
+			
               </div>
           </div>
         </div>
@@ -359,9 +375,9 @@
       
       
         <iframe scrolling="no"
-          src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=51.500702&lng=0.523700"></iframe>
+          src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=50.1540592&lng=-5.052021"></iframe>
       
-
+ 
 
     </div>
 
