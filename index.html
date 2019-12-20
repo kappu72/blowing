@@ -375,7 +375,7 @@
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics#", data);
+        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics/#", data);
       } else {
         WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/#", data);
       }
