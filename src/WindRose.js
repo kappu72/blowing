@@ -109,7 +109,7 @@ export default (data = []) => {
     series: [{
         // specific options for this series instance
         type: 'scatter',
-        data,
+        data: data.reverse(),
         tooltip: {
             valueSuffix: ' kts'
         }
