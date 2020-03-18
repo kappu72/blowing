@@ -322,8 +322,7 @@ hr {
       <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
           src="img/Logo-Navimeteo_2.png" alt="logo" > </a>
     </div>
-    <div id="title" class="txt">PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data
-    </div>
+    <div id="title" class="txt"></div>
   </div>
 
  
@@ -336,7 +335,7 @@ hr {
 
           <div class="windLabels"> 
 
-              <div class="boxTitle">Current <a href="history.html" target="_blank">(>Data Archive)</a></div> 
+              <div class="boxTitle">Current <a id="history" href="history.html" target="_blank">(>Data Archive)</a></div> 
               <div class="windTitle">Wind Speed</div>
               <div class="windSpeed" id="windSpeedTxt"></div>
               <div class="windTitle">Wind Direction</div>
@@ -375,8 +374,8 @@ hr {
           class="imgsat" alt="sat">
       
       
-        <iframe scrolling="no"
-          src="https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=50.1540592&lng=-5.052021"></iframe>
+        <iframe id="ichart" scrolling="no"
+          src=""></iframe>
       
  
 
@@ -391,7 +390,8 @@ hr {
   <script>
     
     
-
+    document.querySelector("#history").setAttribute("href", "history.html?id=" + _id)
+    document.querySelector("#ichart").setAttribute("src", topic[st_id])
     fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id='+st_id).then(function (response) {
       return response.json();
     }).then(function (data = []) {

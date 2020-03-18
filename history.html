@@ -219,8 +219,7 @@
       <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
           src="img/Logo-Navimeteo_2.png" alt="logo" > </a>
     </div>
-    <div id="title" class="txt">PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data
-    </div>
+    <div id="title" class="txt"></div>
   </div>
 
 
@@ -233,7 +232,7 @@
 
           <div class="windLabels">
 
-              <div class="boxTitle">Current <a href="index.html" >(>Home)</a></div> 
+              <div class="boxTitle">Current <a id="home" href="index.html" >(>Home)</a></div> 
               <div class="windTitle">Wind Speed</div>
               <div class="windSpeed" id="windSpeedTxt"></div>
               <div class="windTitle">Wind Direction</div>
@@ -254,7 +253,7 @@
   <script src="./dist/main.js"></script>
   <script src="./src/Config.js"></script>
   <script>
-
+    document.querySelector("#home").setAttribute("href", "index.html?id=" + _id)
     fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php?id='+st_id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
