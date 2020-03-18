@@ -219,7 +219,7 @@
       <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
           src="img/Logo-Navimeteo_2.png" alt="logo" > </a>
     </div>
-    <div class="txt">PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data
+    <div id="title" class="txt">PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data
     </div>
   </div>
 
@@ -252,14 +252,16 @@
 
 
   <script src="./dist/main.js"></script>
+  <script src="./src/Config.js"></script>
   <script>
-    fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php').then(function (response) {
+
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php?id='+st_id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        WindHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, "device/ELP001/19070267/metrics/#", data);
+        WindHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic, data);
       } else {
-        WindHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, "device/ELP001/19070267/metrics/#", data);
+        WindHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic, data);
       }
     });
     // Start up the app; [add server port optional topic and maxData]
