@@ -44,7 +44,7 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
 
   const cleanedTopic= topic.replace("\#", '');
 
-  const initValues = initSeries(last);
+  const initValues = initSeries(last).slice(0,maxData);
   const initSpeed = last.length > 0 ? initValues.WindRose[0].y : 0;
   const initSpeedDir = last.length > 0 ? initValues.WindRose[0].x : 0;
   const initSpeedDate = last.length > 0 ? initValues.WindRose[0].date : 0;
