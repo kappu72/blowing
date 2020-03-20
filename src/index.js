@@ -50,8 +50,8 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
   const initSpeedDate = last.length > 0 ? initValues.WindRose[0].date : 0;
   Theme();
   const Gouge = createGauge([initSpeed]);
-  const WindRose = createWindRose(initValues.WindRose.slice(0,maxData));
-  const WindChart = createWindChart(initValues.windChartS0.slice(0,maxData), initValues.windChartS1.slice(0,maxData));
+  const WindRose = createWindRose(initValues.WindRose.slice(maxData));
+  const WindChart = createWindChart(initValues.windChartS0.slice(maxData), initValues.windChartS1.slice(maxData));
   
   Wind.update(initSpeed,initSpeedDir, initSpeedDate);
 
