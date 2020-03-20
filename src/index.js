@@ -7,9 +7,9 @@ import Wind from './WindLabels';
 import History from './WindHistory';
 import Theme from  './HighChartStyle';
 
-function initSeries(data = []) {
+function initSeries(data = [], maxData = 380) {
 
-  return data.slice(0).reverse().reduce(function (acc, values) {
+  return data.slice(0, maxData).reverse().reduce(function (acc, values) {
     const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
     const time = values.time;
     const timestamp = new Date(time);
@@ -44,14 +44,14 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
 
   const cleanedTopic= topic.replace("\#", '');
 
-  const initValues = initSeries(last);
+  const initValues = initSeries(last, maxData);
   const initSpeed = last.length > 0 ? initValues.WindRose[0].y : 0;
   const initSpeedDir = last.length > 0 ? initValues.WindRose[0].x : 0;
   const initSpeedDate = last.length > 0 ? initValues.WindRose[0].date : 0;
   Theme();
   const Gouge = createGauge([initSpeed]);
-  const WindRose = createWindRose(initValues.WindRose.slice(maxData));
-  const WindChart = createWindChart(initValues.windChartS0.slice(maxData), initValues.windChartS1.slice(maxData));
+  const WindRose = createWindRose(initValues.WindRose);
+  const WindChart = createWindChart(initValues.windChartS0, initValues.windChartS1);
   
   Wind.update(initSpeed,initSpeedDir, initSpeedDate);
 
