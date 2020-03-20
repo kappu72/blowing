@@ -44,14 +44,14 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
 
   const cleanedTopic= topic.replace("\#", '');
 
-  const initValues = initSeries(last).slice(0,maxData);
+  const initValues = initSeries(last);
   const initSpeed = last.length > 0 ? initValues.WindRose[0].y : 0;
   const initSpeedDir = last.length > 0 ? initValues.WindRose[0].x : 0;
   const initSpeedDate = last.length > 0 ? initValues.WindRose[0].date : 0;
   Theme();
   const Gouge = createGauge([initSpeed]);
-  const WindRose = createWindRose(initValues.WindRose);
-  const WindChart = createWindChart(initValues.windChartS0, initValues.windChartS1);
+  const WindRose = createWindRose(initValues.WindRose.slice(0,maxData));
+  const WindChart = createWindChart(initValues.windChartS0.slice(0,maxData), initValues.windChartS1.slice(0,maxData));
   
   Wind.update(initSpeed,initSpeedDir, initSpeedDate);
 
