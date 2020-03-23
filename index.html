@@ -4,7 +4,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="refresh" content="900">
-  <title>PENDENNIS SHIPYARD | Real Time Wind Data </title>
+  <title id="title"></title>  
+  
+<!--   <title id="title">PENDENNIS SHIPYARD | Real Time Wind Data </title> -->  
   <style>
     body{
       margin:0px;
@@ -39,14 +41,17 @@
       float: right;
       display: block;
       color: #f2f2f2;
-      text-align: right;
+      text-align: left;  
       padding: 14px 16px;
       font-family: 'Courier New', Courier, monospace;
       font-size: 20px;
       font-weight: 300;
     }
-
-
+	
+    .logo2 {
+      float: right;
+    }       
+   
 
     /* Change background on mouse-over */
     .navbar a:hover {
@@ -119,6 +124,8 @@
       object-fit: cover;
     }
 
+
+	
 
     iframe {
       border: none;
@@ -320,9 +327,14 @@ hr {
 
     <div class="logo">
       <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
-          src="img/Logo-Navimeteo_2.png" alt="logo" > </a>
+          src="img/Logo-Navimeteo_2.png" alt="logo navimeteo" > </a>
     </div>
-    <div id="title" class="txt"></div>
+    <div id="info" class="txt"></div>  
+	
+	    <div id="logo" class="logo2">   
+      <!-- <a href="https://www.nci.org.uk/capecornwall" target="_blank"><img src="img/nci.png" alt="logo customer" > </a>       -->
+    </div>  
+	 
   </div>
 
  
@@ -331,7 +343,7 @@ hr {
   <div class="app-container">
     <div class="obs-container">
       <div class="upperRow">
-        <div class="windContainer" style="min-width: 255px;">
+        <div class="windContainer" style="min-width: 255px;"> 
 
           <div class="windLabels"> 
 
