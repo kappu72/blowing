@@ -1,5 +1,5 @@
 let config = {
-    st_19070267: { topic: "device/ELP001/19070267/metrics/#",
+    st_19070267: { topic: "device/ALP001/19070267/metrics/#",
     title: "PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data",
     iframe: "https://navimeteoexternals-dev.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBLGP&lat=50.1540592&lng=-5.052021"
     },
