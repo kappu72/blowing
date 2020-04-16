@@ -4,7 +4,7 @@ let speedL = document.getElementById("windSpeedTxt");
 let dirL = document.getElementById("windDirTxt");
 let dateL = document.getElementById("dataTimestamp");
 let _format = 'ddd MMM DD HH:mm:ss';
-let _utc = true;
+let _utc = false;
 
 let maxSpeedL = document.getElementById("maxWindSpeedTxt");
 let maxDirL = document.getElementById("maxWindDirTxt");

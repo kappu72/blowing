@@ -13,8 +13,8 @@ function initSeries(data = [], maxData = 380) {
     const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
     const time = values.time + "Z";
     const timestamp = new Date(time);
-    acc.windChartS0.push([timestamp.getTime(), wind_speed]);
-    acc.windChartS1.push([timestamp.getTime(), wind_dir]);
+    acc.windChartS0.push([(timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000)), wind_speed]);
+    acc.windChartS1.push([(timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000)), wind_dir]);
     acc.WindRose.push({ x: wind_dir, y: wind_speed, date: timestamp });
     return acc
   }, { windChartS0: [], windChartS1: [], WindRose: [] });
@@ -55,7 +55,7 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
   
   Wind.update(initSpeed,initSpeedDir, initSpeedDate);
 
-  Wind.updateMax(max.speed, max.dir, new Date(max.time || "now"));
+  Wind.updateMax(max.speed, max.dir, new Date(max.time && max.time + "z" || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
@@ -67,8 +67,8 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
       const timestamp = new Date(time);
       const slice = WindRose.series[0].data.length > maxData;
       
-      WindChart.series[0].addPoint([timestamp.getTime(), wind_speed], true, slice, true);
-      WindChart.series[1].addPoint([timestamp.getTime(), wind_dir], true, slice, true);
+      WindChart.series[0].addPoint([timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000), wind_speed], true, slice, true);
+      WindChart.series[1].addPoint([timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000), wind_dir], true, slice, true);
       WindRose.series[0].addPoint({ x: wind_dir, y: wind_speed, date: timestamp }, true, slice, true);
       point.update(wind_speed);
       
@@ -94,7 +94,7 @@ window.WindHistory =  (config, topic, {history = []} = {}) => {
     if (t === cleanedTopic + "inst") {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-      const time = values.time;
+      const time = values.time + "Z";
       Wind.update(wind_speed, wind_dir, time);  
     }
   })
