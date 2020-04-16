@@ -11,7 +11,7 @@ function initSeries(data = [], maxData = 380) {
 
   return data.slice(0, maxData).reverse().reduce(function (acc, values) {
     const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-    const time = values.time;
+    const time = values.time + "+00";
     const timestamp = new Date(time);
     acc.windChartS0.push([timestamp.getTime(), wind_speed]);
     acc.windChartS1.push([timestamp.getTime(), wind_dir]);
@@ -62,7 +62,7 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, maxData = 380) 
     if (t === cleanedTopic + "inst") {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-      const time = values.time;
+      const time = values.time + "+00";
       const point = Gouge.series[0].points[0];
       const timestamp = new Date(time);
       const slice = WindRose.series[0].data.length > maxData;
