@@ -1,3 +1,8 @@
+function setInnerHTML (selector, value) {
+    if(document.querySelector(selector)){
+        document.querySelector(selector).innerHTML = value;
+    }
+}
 let config = {
     st_19070267: { topic: "device/ALP001/19070267/metrics/#",
 	title: "PENDENNIS SHIPYARD | Real Time Wind Data",
@@ -17,7 +22,7 @@ let _id = parsedUrl.searchParams.get("id") || "19070267"
 let st_id = "st_" + _id;
 st_id = config[st_id] ? st_id : "st_19070267"
 //Settings the station title
-document.querySelector("#title").innerHTML = config[st_id].title;  
-document.querySelector("#info").innerHTML = config[st_id].info;           
-document.querySelector("#logo").innerHTML = config[st_id].logo; 
+setInnerHTML("#title", config[st_id].title);
+setInnerHTML("#info", config[st_id].info);
+setInnerHTML("#logo", config[st_id].logo); 
       
