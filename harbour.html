@@ -10,96 +10,28 @@
   <style>
     body{
       margin:0px;
-      background-color: rgba(0,0,0,0.2);
-      }
-    /* The navigation bar */
-    .navbar {
-      z-index: 9999;
-      overflow: hidden;
-      background-color: #333;
-      position: sticky;
-      /* Set the navbar to fixed position */
-      top: 0;
-      /* Position the navbar at the top of the page */
-      width: 100%;
-      /* Full width */
+      background-color: rgba(0,0,0,0.6);
     }
-
-    /* Links inside the navbar */
-    .navbar a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-
-    }
-
-
-    .txt {
-      float: right;
-      display: block;
-      color: #f2f2f2;
-      text-align: left;  
-      padding: 14px 16px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 20px;
-      font-weight: 300;
-    }
-	
-    .logo2 {
-      float: right;
-    }       
-   
-
-    /* Change background on mouse-over */
-    .navbar a:hover {
-      background: #ddd;
-      color: black;
-    }
-
 
     .app-container {
-      padding: 2px;
+      padding: 10px;
       padding-top: 20px;
+      padding-bottom:20px;
       background-color: transparent;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       /* align-items: center; */
-      width: 100vw;
-      min-height: 100vh;
+      position: absolute;
+      top:0px;
+      bottom: 0px;
+      width:100%;
     }
-   
-    .fore-container, .obs-container {
-      margin:10px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .obs-container {
-      flex: 1 1 auto;
-    }
-    .fore-container {
-      flex: 1 1 auto;
-    }
-
-    .upperRow {
-      /* padding-top: 30px; */
-      padding-bottom: 200px;
-      display: flex;
-      justify-content: center;
-      overflow: hidden;
-      flex-direction: column;
-      /* flex-wrap: wrap; */
-    }
-
 
     .windContainer {
       align-self: center;
       background: transparent;
-      min-width: 300px;
-      min-height: 350px;
+      min-width: 280px;
+      min-height: 330px;
       flex: 1 1 auto;
       overflow: hidden;
     }
@@ -242,9 +174,9 @@ hr {
 
 
   <div class="app-container">
-    <div class="obs-container">
-      <div class="upperRow">
-        <div class="windContainer" style="min-width: 255px; min-height: unset;"> 
+    
+    
+        <div class="windContainer" style="min-width: 255px; min-height: 175px;"> 
 
           <div class="windLabels"> 
             <div>
@@ -271,12 +203,6 @@ hr {
         </div>
         <div class="windContainer" id="windSpeedContainer"></div>
         <div class="windContainer" id="windRoseContainer"></div>
-
-      </div>
-
-    </div>
-
-
 
   </div>
 
