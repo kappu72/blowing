@@ -254,7 +254,7 @@
   <script src="./src/Config.js"></script>
   <script>
     document.querySelector("#home").setAttribute("href", "index.html?id=" + _id)
-    fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php?id='+st_id).then(function (response) {
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php?id='+config[st_id].id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
