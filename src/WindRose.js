@@ -1,6 +1,6 @@
 const Highcharts = window.Highcharts;
 
-export default (data = []) => {
+export default (data = [], uom = "kts") => {
     return Highcharts.chart('windRoseContainer', {
 
         chart: {
@@ -27,7 +27,7 @@ export default (data = []) => {
             useHTML: true,
             headerFormat: "<small>{point.point.date:%d-%m-%Y %H:%M:%S}</small><br>",
             pointFormatter: function () {
-                return "Wind speed: <b>" + Highcharts.numberFormat(this.y, 2) + " kts</b><br>"
+                return "Wind speed: <b>" + Highcharts.numberFormat(this.y, 2) + " " + uom +"</b><br>"
                     + "Wind direction: <b>" + Highcharts.numberFormat(this.x, 2) + "&deg;</b>";
             }
         },
@@ -101,7 +101,7 @@ export default (data = []) => {
         showLastLabel: true,
         labels: {
             formatter: function () {
-                return Highcharts.numberFormat(this.value,0) + " kts";
+                return Highcharts.numberFormat(this.value,0) + " " + uom;
             }
         },
         reversedStacks: false
@@ -111,7 +111,7 @@ export default (data = []) => {
         type: 'scatter',
         data: data.reverse(),
         tooltip: {
-            valueSuffix: ' kts'
+            valueSuffix: ' '+ uom
         }
     }],
 

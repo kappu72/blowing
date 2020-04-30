@@ -17,7 +17,7 @@ const prepareData =  (data=[]) => {
     {speedS:[], dirS:[]});
 }
 
- export default ( data = [], title = "") => {
+ export default ( data = [], uom = "kts") => {
 
 
     const {speedS = [], dirS = []} = prepareData(data);
@@ -33,7 +33,7 @@ const prepareData =  (data=[]) => {
             defaultSeriesType: "spline"
         },
         title: {
-            text: title,
+            text: "",
             style: {
                 display: 'none'
             }
@@ -65,14 +65,14 @@ const prepareData =  (data=[]) => {
                 text: 'Wind speed'
             },
             labels: {
-                format: '{value} kts'
+                format: '{value} ' + uom
             },
             allowDecimals: true,
             opposite: true
         }, {
             // title: {text: 'Wind speed max'},
             labels: {
-                format: '{value} kts'
+                format: '{value} '+ uom
             },
             allowDecimals: true,
             opposite: false
@@ -110,7 +110,7 @@ const prepareData =  (data=[]) => {
             name: 'Wind speed',
             tooltip: {
                 valueDecimals: 1,
-                valueSuffix: ' kts'
+                valueSuffix: ' ' + uom
             },
             color: '#00acec'
         }, {

@@ -1,7 +1,7 @@
 const Highcharts = window.Highcharts;
 
 
-export default  (data = [0]) => {
+export default  (data = [0], uom = "kts") => {
     return Highcharts.chart('windSpeedContainer', {
     chart: {
         type: 'gauge',
@@ -77,7 +77,7 @@ export default  (data = [0]) => {
             },
         },
         title: {
-            text: 'kts'
+            text: uom
         },
         plotBands: [{
             from: 0,
@@ -103,12 +103,12 @@ export default  (data = [0]) => {
         name: 'Speed',
         data,
         tooltip: {
-            valueSuffix: ' kts',
+            valueSuffix: ' ' + uom,
             valueDecimals: 2,
         }, 
         dataLabels: {
            formatter: function() {
-               return Highcharts.numberFormat(this.y, 2) + " kts"
+               return Highcharts.numberFormat(this.y, 2) + " " + uom
            }
         }
     }]

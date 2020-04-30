@@ -4,7 +4,7 @@
  let seconds = 600;
 let minutesText;
     let minutes = seconds / 60;
-export default (speedData = [], dirData = []) => {
+export default (speedData = [], dirData = [], uom = "kts") => {
     return Highcharts.chart('windChartContainer', {
         chart: {
             backgroundColor: 'rgba(0,0,0,0)',
@@ -32,7 +32,7 @@ export default (speedData = [], dirData = []) => {
                 text: "Wind speed"
             },
             labels: {
-                format: "{value} kts"
+                format: "{value} " + uom
             },
             allowDecimals: true,
             opposite: true
@@ -56,7 +56,7 @@ export default (speedData = [], dirData = []) => {
         series: [{
             name: "Wind Speed",
             tooltip: {
-                valueSuffix: " kts",
+                valueSuffix: " " + uom,
                 valueDecimals: 2,
             },
             data: speedData,

@@ -408,9 +408,9 @@ hr {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic, data);
+        WindBlowing({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic, data, config[st_id].uom);
       } else {
-        WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic, data);
+        WindBlowing({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic, data, config[st_id].uom);
       }
     });
     // Start up the app; [add server port optional topic and maxData]

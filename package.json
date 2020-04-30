@@ -17,9 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compileMqtt": "webpack node_modules/mqtt/mqtt.js --output-library mqtt",
     "compile": "webpack --watch --mode='development' -o dist/main.js ",
-    "compile-harbour": "webpack --watch --mode='development' src/harbourBundle.js -o dist/harbour.js ",
-    "build": "webpack -o dist/main.js ",
-    "build-harbour": "webpack src/harbourBundle.js -o dist/harbour.js "
+    "build": "webpack -o dist/main.js "
   },
   "author": "kappu72@gmail.com",
   "repository": {"type": "git",

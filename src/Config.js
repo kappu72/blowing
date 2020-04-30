@@ -1,3 +1,4 @@
+
 function setInnerHTML (selector, value) {
     if(document.querySelector(selector)){
         document.querySelector(selector).innerHTML = value;
@@ -14,7 +15,8 @@ let config = {
     title: "NCI Cape Cornwall | Real Time Wind Data",
     logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
 	info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",    
-    iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBCCL&lat=50.126992&lng=-5.715079"  
+    iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=GBCCL&lat=50.126992&lng=-5.715079",
+    uom: "mph" // uom: one of kt, ms, mph default kt
     } 
   }
 let parsedUrl = new URL(window.location.href);
