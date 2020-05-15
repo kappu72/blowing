@@ -1,5 +1,5 @@
 import date from 'date-and-time';
-
+import {UOM} from "./utils";
 let speedL = document.getElementById("windSpeedTxt");
 let dirL = document.getElementById("windDirTxt");
 let dateL = document.getElementById("dataTimestamp");
@@ -13,7 +13,7 @@ let maxDateL = document.getElementById("maxDataTimestamp");
 export const update = (speed = 0, dir = 0, uom = "kts", time = new Date(), format = _format, utc = _utc) => {
 
     if(speedL && speed.toFixed) 
-        speedL.innerHTML = speed.toFixed(2) + " " + uom;
+        speedL.innerHTML = speed.toFixed(2) + " " + uom + "/BFT" + UOM[uom].toBeaufort(speed);
     if(dirL && dir.toFixed)
         dirL.innerHTML = dir.toFixed(2) + "°";
     if(dateL && isDate(time)) dateL.innerHTML = date.format(new Date(time), format, utc);
