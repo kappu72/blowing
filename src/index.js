@@ -23,9 +23,9 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, uom = "kt",  ma
   const WindRose = createWindRose(initValues.WindRose, uomUtils.label);
   const WindChart = createWindChart(initValues.windChartS0, initValues.windChartS1, uomUtils.label);
   
-  Wind.update(initSpeed,initSpeedDir, uomUtils.label, initSpeedDate);
+  Wind.update(initSpeed,initSpeedDir, uomUtils, initSpeedDate);
 
-  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils.label, new Date(max.time && max.time + "z" || "now"));
+  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && max.time + "z" || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
@@ -42,12 +42,12 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, uom = "kt",  ma
       WindRose.series[0].addPoint({ x: wind_dir, y: wind_speed, date: timestamp }, true, slice, true);
       point.update(speedC);
       
-      Wind.update(speedC, wind_dir,  uomUtils.label, timestamp);
+      Wind.update(speedC, wind_dir,  uomUtils, timestamp);
       
     }else if (t === cleanedTopic + "lasthourmax") {
       const values = JSON.parse(payload);
       const {speed, dir, time} = values;
-      Wind.updateMax(uomUtils.convert(speed), dir,  uomUtils.label, time)
+      Wind.updateMax(uomUtils.convert(speed), dir,  uomUtils, time)
       
     }
 
@@ -87,9 +87,9 @@ window.WindBlowingHarbour = (config, topic, {last = [], max = {}} = {}, uom = "k
   const Gouge = createGauge([initSpeed],  uomUtils.label);
   const WindRose = createWindRose(initValues.WindRose, uomUtils.label);
   
-  Wind.update(initSpeed,initSpeedDir, uomUtils.label, initSpeedDate);
+  Wind.update(initSpeed,initSpeedDir, uomUtils, initSpeedDate);
 
-  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils.label, new Date(max.time && max.time + "z" || "now"));
+  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && max.time + "z" || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
@@ -104,12 +104,12 @@ window.WindBlowingHarbour = (config, topic, {last = [], max = {}} = {}, uom = "k
       WindRose.series[0].addPoint({ x: wind_dir, y: speedC, date: timestamp }, true, slice, true);
       point.update(speedC);
       
-      Wind.update(speedC, wind_dir, uomUtils.label, timestamp);
+      Wind.update(speedC, wind_dir, uomUtils, timestamp);
       
     }else if (t === cleanedTopic + "lasthourmax") {
       const values = JSON.parse(payload);
       const {speed, dir, time} = values;
-      Wind.updateMax(uomUtils.convert(speed), dir,  uomUtils.label, time)  
+      Wind.updateMax(uomUtils.convert(speed), dir,  uomUtils, time)  
     }
 
   })
