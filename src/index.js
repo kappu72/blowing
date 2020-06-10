@@ -66,7 +66,7 @@ window.WindHistory =  (config, topic, {history = []} = {}, uom = "kt") => {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
       const time = values.time + "Z";
-      Wind.update(uomUtils.convert(wind_speed), wind_dir, time);  
+      Wind.update(uomUtils.convert(wind_speed), wind_dir,uomUtils, time);  
     }
   })
 
