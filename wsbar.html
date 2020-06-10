@@ -4,7 +4,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="refresh" content="900">
-  <title id="titlePage"></title>          
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
   
 <!--   <title id="title">PENDENNIS SHIPYARD | Real Time Wind Data </title> -->  
   <style>
@@ -68,9 +70,13 @@
 
     .windLabels {
       padding-top: 0px;
-      padding-left: 20px;
+      padding-left: 5px;     
       display: flex;
       flex-direction: row;
+    }
+	
+	 .boxR {
+      padding-left: 40px;       
     }
 	
 	
@@ -85,10 +91,26 @@ hr {
 } 
 
 
+    .wsTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px; 
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FFFFFF;    
+	  vertical-align: middle; 
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+	  margin-top: 10px;
+      margin-bottom: 20px;  
+ 
+    }
 
     .boxTitle {
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 17px;
+      font-size: 15px;
       letter-spacing: 2px;
       word-spacing: 2px;
       color: #FFCC99; 
@@ -98,13 +120,39 @@ hr {
       font-variant: normal;
       text-transform: none;
     }
+	
+	
+	
+	
+	 .iconData {  
+      font-size: 23px; 
+      color: #FFFFFF;  
+      margin-top: 15px;   	   
+	  margin-right: 30px;         
+    }  
+	
+	 .data {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      word-spacing: 2px;  
+      vertical-align: middle;  
+	  color: #FFFFFF;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+	
+	
 
     .windTitle {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 15px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #666666;
+      color: #999999;  
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
@@ -113,47 +161,52 @@ hr {
     }
 
 
-    .windSpeed {
+
+
+    .iconWindSpeed {  
+      font-size: 23px; 
+      color: #80B1E0;    
+	  margin-right: 30px;               
+    }  
+
+
+    .windSpeed {  
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 30px; 
+      font-size: 21px;         
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #00ACEC;
+      color: #80B1E0; 
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
       font-variant: normal;
       text-transform: none;
     } 
+	
+	 .iconWindDir {  
+      font-size: 23px; 
+      color: #F3F31A;     
+	  margin-right: 30px;            
+    }  
+
+       
 
     .windDir {
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 30px;
+      font-size: 21px;        
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #FEFE00;
+	  color: #F3F31A;    
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
       font-variant: normal;
-      text-transform: none;
-    }
-    .data {
-      font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 15px;
-      letter-spacing: 2px;
-      word-spacing: 2px;
-      color: #FFFFFF;
-      font-weight: normal;
-      text-decoration: none;
-      font-style: normal;
-      font-variant: normal;
-      text-transform: none;
+      text-transform: none; 
     }
 
 
-   
 
+  
     
     .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
       font-size: 14px !important;
@@ -174,37 +227,54 @@ hr {
 
 
   <div class="app-container">
-    
-    
-        <div class="windContainer" style="min-width: 255px; min-height: 175px;"> 
-
-          <div class="windLabels"> 
-            <div>
-              <div class="boxTitle">Current</div> 
-              <div class="windTitle">Wind Speed</div>
-              <div class="windSpeed" id="windSpeedTxt"></div>
-              <div class="windTitle">Wind Direction</div>
-              <div class="windDir" id="windDirTxt"></div>
-              <div style="padding-right: 20px;">
+   
+        <div class="windContainer" style="min-width: 255px; min-height: 175px;">  
+		
+		
+	      <div class="wsTitle" id="title"></div>                                 
+		
+          <div class="windLabels"> 	  
+            
+			<div>
+   
+                <div class="iconData"><i class="material-icons">access_time</i></div>  
+                <div class="iconWindSpeed"><i class="material-icons">speed</i></div>   
+                <div class="iconWindDir"><i class="material-icons">navigation</i></div>    
+			  </div> 
+			  
+			  
+			        <div>
+              <div class="boxTitle">LIVE</div>  
+			     <!-- <div style="padding-right: 20px;"> -->
                 <div class="data" id="dataTimestamp"></div>
-              </div>
-            </div>
-            <div>
+              <!-- </div> -->
+ 
+              <div class="windSpeed" id="windSpeedTxt"></div>
+              <div class="windDir" id="windDirTxt"></div>
+           
+            </div>  
+			  
+			   
+			
+              <div class="boxR">
               <div class="boxTitle">Max Last Hour</div> 
-              <div class="windTitle">Wind Speed</div>
+			   <!-- <div style="padding-right: 20px;">                 -->
+                <div class="data" id="maxDataTimestamp"></div>       
+			  <!-- </div> -->
+            
               <div class="windSpeed" id="maxWindSpeedTxt"></div>
-              <div class="windTitle">Wind Direction</div>
               <div class="windDir" id="maxWindDirTxt"></div>
-              <div style="padding-right: 20px;">
-                <div class="data" id="maxDataTimestamp"></div>
-			  </div>
             </div>
-          </div>
+        
+		</div>
         </div>
+		
+		
+		
         <div class="windContainer" id="windSpeedContainer"></div>
-        <div class="windContainer" id="windRoseContainer"></div>
+        <div class="windContainer" id="windRoseContainer"></div>   
 
-  </div>
+  </div>   
 
 
   <script src="./dist/main.js"></script>
