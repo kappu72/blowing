@@ -127,7 +127,7 @@ const prepareData =  (data=[]) => {
             color: '#fefe00'
         }],
         exporting: {
-            filename: title + " wind speed and wind direction",
+            filename: "wind speed and wind direction",
             buttons: {
                 contextButton: {
                     menuItems: [
