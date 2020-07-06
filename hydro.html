@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/highcharts.css"  ></link>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+  <style>
+
+
+
+
+
+
+.highcharts-color-99 {
+  fill: rgba(100,100,100,0.4);
+  stroke: rgba(100,100,100,0.4);
+}
+.highcharts-color-98 {
+  fill: #7cb5ec;
+  stroke: rgba(100,100,100,0.4);
+}
+.highcharts-grid-line{
+  stroke-width: 0;
+}
+.highcharts-axis-title {
+  font-size: large;
+}
+.highcharts-axis-labels.highcharts-xaxis-labels{
+  font-size: larger;
+}
+.highcharts-axis-labels.highcharts-yaxis-labels{
+  font-size: larger;
+}
+.highcharts-label.highcharts-data-label{
+  font-size: larger;
+}
+body{
+  margin:0px;
+}
+.txt {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: left;  
+  padding: 14px 16px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 300;
+}
+.app-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+}
+.gauges-container {
+  flex:1;
+  display: flex;
+  flex-direction: row;
+}
+.texts-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /* padding-bottom: 50px; */
+}
+#updateTimestamp, #rate{ 
+  margin: 10px;
+  flex: 1;
+  font-weight: bold;
+  font-size: larger;
+}
+    @media screen and (max-width: 700px) {
+      
+      .txt {
+        font-size: 15px;
+      }
+  
+    }  
+
+	
+	
+hr {
+    background-color:#999;
+    border-width:0;
+    color:#999;
+    height:1px;
+    line-height:0;
+    margin: 0.5em 0;
+    text-align: center;
+} 
+
+.drops{
+      flex: 1;
+      margin: 5px;
+      background-color: white;
+}
+
+    
+  </style>
+
+</head>
+
+
+  
+<body>
+  <div class="app-container">
+    <div class="texts-container">
+        <div id="updateTimestamp"></div>
+        <div id="rate"></div>
+    </div>
+    <div class="gauges-container">
+      <div class="drops"  id="hydro10s"></div>
+      <div class="drops"  id="hydro60s"></div>
+  </div>
+  </div>
+
+
+  <script src="./dist/hydro.js"></script>
+  <script>
+    topic = "device/ELP001/19090252/metrics/inst";
+    if (location.protocol === 'https:') {
+      DropsFalling({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, topic);
+      } else {
+        DropsFalling({ server: "ws://dev.retemet.com", options: { port: 80 } }, topic);
+      }
+  </script>
+</body>
+
+</html>

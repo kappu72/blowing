@@ -43,9 +43,9 @@ export function initSeries(data = [],uomUtils, maxData = 380) {
       console.log("Connesso al server");
       client.subscribe(topic, function (err) {
         if (!err) {
-          console.log("Stazione sottoscritta il vento inizia a soffiare",topic);
+          console.log("Stazione sottoscritta: " + topic);
         } else {
-          console.log("Impossibile connettersi il vento non soffia", err);
+          console.log("Impossibile connettersi", err);
         }
       });
   
