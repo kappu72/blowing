@@ -13,13 +13,14 @@
     "webpack": "^4.41.2"
   },
   "devDependencies": {
+    "terser-webpack-plugin": "^3.0.6",
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
     "compile-hydro": "webpack --entry ./src/hydro.js --watch --mode='development' -o dist/hydro.js ",
     "compile": "webpack --watch --mode='development' -o dist/main.js ",
-    "build": "webpack -o dist/main.js ",
-    "build-hydro": "webpack --entry ./src/hydro.js -o dist/hydro.js "
+    "build": "webpack --env.prod --env.min -o dist/main.js ",
+    "build-hydro": "webpack --mode='production' --env.prod --env.min --entry ./src/hydro.js -o dist/hydro.js "
   },
   "author": "kappu72@gmail.com",
   "repository": {

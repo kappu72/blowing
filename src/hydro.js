@@ -3,7 +3,7 @@ import date from 'date-and-time';
 let _format = 'ddd MMM DD HH:mm:ss';
 import {broker} from './utils';
 import HydroCylinder from './HydroCylinder';
-import { numberFormat } from 'highcharts';
+
 
 window.DropsFalling = (config, topic ) => { 
   const client = broker(config, topic);
