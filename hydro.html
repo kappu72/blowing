@@ -16,12 +16,12 @@
 
 
 .highcharts-color-99 {
-  fill: rgba(100,100,100,0.4);
-  stroke: rgba(100,100,100,0.4);
+  fill: rgba(100,100,100,0.2);
+  stroke: rgba(100,100,100,0.6);
 }
 .highcharts-color-98 {
-  fill: #7cb5ec;
-  stroke: rgba(100,100,100,0.4);
+  fill: #7cb6eca1;
+  stroke: rgba(100,100,100,0.6);
 }
 .highcharts-grid-line{
   stroke-width: 0;
@@ -59,26 +59,35 @@ body{
   right: 0;
   background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 2px;
 }
 .gauges-container {
   flex:1;
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
 }
 .texts-container {
   display: flex;
+  max-width: 300px;
   flex-direction: column;
   margin: 20px;
   /* padding-bottom: 50px; */
 }
-#updateTimestamp, #rate{ 
-  margin: 10px;
-  flex: 1;
-  font-weight: bold;
-  font-size: larger;
-}
+
+#rate {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 30px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #00aefe;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
     @media screen and (max-width: 700px) {
       
       .txt {
@@ -87,7 +96,33 @@ body{
   
     }  
 
-	
+  .data {
+    white-space: nowrap;
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+    .rateTitle {
+      margin-top:10px;
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
 	
 hr {
     background-color:#999;
@@ -115,8 +150,10 @@ hr {
 <body>
   <div class="app-container">
     <div class="texts-container">
-        <div id="updateTimestamp"></div>
+        <div class="data" id="updateTimestamp"></div>
+        <div class="rateTitle">Rate precipitazione:</div>
         <div id="rate"></div>
+        <hr/> 
     </div>
     <div class="gauges-container">
       <div class="drops"  id="hydro10s"></div>

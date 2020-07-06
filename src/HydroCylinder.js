@@ -5,10 +5,10 @@ export default (id = "hydro10s", title = "Pioggia Ultimi 10 sec", capacity =  2,
             styledMode: true,
             options3d: {
                 enabled: true,
-                alpha: 0,
-                beta: 0,
+                alpha: 20,
+                beta: 50,
                 depth: 90,
-                viewDistance: 10
+                viewDistance: 100
             }
             
         },
