@@ -7,15 +7,14 @@ export default (id = "hydro10s", title = "Pioggia Ultimi 10 sec", capacity =  2,
                 enabled: true,
                 alpha: 20,
                 beta: 50,
-                depth: 90,
+                depth: 80,
                 viewDistance: 100
             }
             
         },
         exporting : {enabled:false},
         title: {
-                text: "",
-                
+                text: ""
             },
         yAxis: {
         tickInterval,
@@ -32,14 +31,22 @@ export default (id = "hydro10s", title = "Pioggia Ultimi 10 sec", capacity =  2,
         },
         xAxis: {
             categories: [title],
+            labels: {
+                y: 30,
+                x: 150,
+                position3d: "flap"
+            }
+            
+
         },
         tooltip: {enabled: false},
         plotOptions: {
                 cylinder: {
                     enableMouseTracking: false,
-            depth:300
+            depth:250
             },
             series: {
+            
             stacking: 'normal',
             }
         },
