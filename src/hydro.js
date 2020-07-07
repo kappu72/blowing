@@ -37,7 +37,7 @@ window.DropsFalling = (config, topic ) => {
         timestamp.innerHTML = date.format(new Date(time), _format, false)
       }
       if(rate) {
-        rate.innerHTML =  numberFormat(pRate, 2) + " mm/h"
+        rate.innerHTML =  Number(pRate).toFixed(2) + " mm/h"
       }
     }
 
