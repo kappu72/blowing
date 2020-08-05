@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8"/>
-
+  <title></title>
 <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/highcharts.css"  ></link>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
@@ -174,12 +174,13 @@ hr {
 
 
   <script src="./dist/hydro.js"></script>
+  <script src="./src/ConfigHydro.js"></script>
   <script>
     topic = "device/ELP001/19090252/metrics/#";
     if (location.protocol === 'https:') {
-      DropsFalling({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, topic);
+      DropsFalling({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic);
       } else {
-        DropsFalling({ server: "ws://dev.retemet.com", options: { port: 80 } }, topic);
+        DropsFalling({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic);
       }
   </script>
 </body>
