@@ -9,7 +9,7 @@ window.DropsFalling = (config, topic ) => {
   const cleanedTopic= topic.replace("\#", ''); 
   console.log(topic, cleanedTopic);
   const client = broker(config, topic);
-  const rate = document.querySelector("#rate");
+  
   const timestamp = document.querySelector("#updateTimestamp");
   const TenSec = HydroCylinder("hydro10s", "Pioggia Ultimi 10 sec", 2);
   // const OneMinute = HydroCylinder("hydro60s", "Pioggia Ultimo minuto", 10, 1);
@@ -20,19 +20,18 @@ window.DropsFalling = (config, topic ) => {
     m10: {el: HydroCylinder("hydro10m", "Pioggia Ultimi 10m", 50, 5), max: 50},
     m30: {el: HydroCylinder("hydro30m", "Pioggia Ultimi 30m", 100, 10), max: 100},
     h1:  {el: HydroCylinder("hydro1h", "Pioggia Ultima ora", 200, 20), max: 200},
-    h24: {el: HydroCylinder("hydro24h", "Pioggia Ultimo giorno", 1000, 100), max: 1000},
+    h24: {el: document.querySelector("#hydro24h")}
   }
 
   if(timestamp) {
     timestamp.innerHTML = "In attesa aggiornamento" 
   }
-  if(rate) {
-    rate.innerHTML = "0.00 mm/h"
+  if(hydros.h24.el) {
+    hydros.h24.el.innerHTML = "NA"
   }
 
 
   client.on("message", function (t, payload) {
-    console.log(t);
     if (t === cleanedTopic + "inst") {
       let {inst: [,,,tmp, p10, p60, pRate], time} = JSON.parse(payload);
       const tenTop = TenSec.series[0].points[0]
@@ -47,19 +46,20 @@ window.DropsFalling = (config, topic ) => {
       if(timestamp) {
         timestamp.innerHTML = date.format(new Date(time), _format, false)
       }
-      if(rate) {
-        rate.innerHTML =  Number(pRate).toFixed(2) + " mm/h"
-      }
     } else if(t === cleanedTopic + "rainagg") {
       let {stats:values, time} = JSON.parse(payload);
       console.table(values);
       values.map(({res: {sum, count}, type, time}) => {
-        console.log(type);
+        
         const {el, max} = hydros[type] || {};
-        if(el) {
+        if(type == "h24" && el) {
+          el.innerHTML =  Number(sum).toFixed(2) + " mm"
+        }
+        else if(el) {
           el.series[0].points[0].update(max-sum);
           el.series[1].points[0].update(sum);
         }
+        
       })
     }
   })
