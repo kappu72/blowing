@@ -1,4 +1,7 @@
 export default (id = "hydro10s", title = "Pioggia Ultimi 10 sec", capacity =  2, tickInterval= 0.2) => {
+    if(document.querySelector("#"+id) == null) {
+        return null;
+    }
     return Highcharts.chart(id, {
         
         chart: {
@@ -71,7 +74,7 @@ export default (id = "hydro10s", title = "Pioggia Ultimi 10 sec", capacity =  2,
                 format: "{point.y:.2f} mm"
             },
             showInLegend: false,
-                    colorIndex: 98
+            colorIndex: 98
         },
         ]
     });
