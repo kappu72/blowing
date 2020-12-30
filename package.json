@@ -20,7 +20,9 @@
     "compile-hydro": "webpack --entry ./src/hydro.js --watch --mode='development' -o dist/hydro.js ",
     "compile": "webpack --watch --mode='development' -o dist/main.js ",
     "build": "webpack --env.prod --env.min -o dist/main.js ",
-    "build-hydro": "webpack --mode='production' --env.prod --env.min --entry ./src/hydro.js -o dist/hydro.js "
+    "build-hydro": "webpack --mode='production' --env.prod --env.min --entry ./src/hydro.js -o dist/hydro.js ",
+    "build-bevano": "webpack --mode='production' --env.prod --env.min --entry ./src/bevano.js -o dist/bevano.js ",
+    "compile-bevano": "webpack --entry ./src/bevano.js --watch --mode='development' -o dist/bevano.js "
   },
   "author": "kappu72@gmail.com",
   "repository": {
