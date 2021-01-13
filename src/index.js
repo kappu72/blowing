@@ -6,7 +6,8 @@ import createWindChart from './WindChart';
 import Wind from './WindLabels';
 import History from './WindHistory';
 import Theme from  './HighChartStyle';
-import {UOM, initSeries, broker} from './utils';
+import {UOM, initSeries, broker, setTZ} from './utils';
+
 
 
 window.WindBlowing = (config, topic, {last = [], max = {}} = {}, uom = "kt",  maxData = 380) => {
@@ -25,14 +26,14 @@ window.WindBlowing = (config, topic, {last = [], max = {}} = {}, uom = "kt",  ma
   
   Wind.update(initSpeed,initSpeedDir, uomUtils, initSpeedDate);
 
-  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && max.time + "z" || "now"));
+  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && setTZ(max.time) || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
     if (t === cleanedTopic + "inst") {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-      const time = values.time + "Z";
+      const time = setTZ(values.time);
       const point = Gouge.series[0].points[0];
       const timestamp = new Date(time);
       const slice = WindRose.series[0].data.length > maxData;
@@ -65,7 +66,7 @@ window.WindHistory =  (config, topic, {history = []} = {}, uom = "kt") => {
     if (t === cleanedTopic + "inst") {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-      const time = values.time + "Z";
+      const time = setTZ(values.time);
       Wind.update(uomUtils.convert(wind_speed), wind_dir,uomUtils, time);  
     }
   })
@@ -89,14 +90,14 @@ window.WindBlowingHarbour = (config, topic, {last = [], max = {}} = {}, uom = "k
   
   Wind.update(initSpeed,initSpeedDir, uomUtils, initSpeedDate);
 
-  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && max.time + "z" || "now"));
+  Wind.updateMax(uomUtils.convert(max.speed), max.dir,  uomUtils, new Date(max.time && setTZ(max.time) || "now"));
   
   const client = broker(config, topic);
   client.on("message", function (t, payload) {
     if (t === cleanedTopic + "inst") {
       const values = JSON.parse(payload);
       const [t, hPA, alim_V, alim_T, wind_speed, wind_dir, log_V] = values.inst;
-      const time = values.time + "Z";
+      const time = setTZ(values.time);
       const point = Gouge.series[0].points[0];
       const timestamp = new Date(time);
       const slice = WindRose.series[0].data.length > maxData;
