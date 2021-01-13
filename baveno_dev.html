@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="refresh" content="900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+  
+  
+  <title id="titlePage"></title>        
+  
+  <style>
+  
+
+  
+    body{
+      margin:0px;
+      background-color: black;
+	  overflow-x: hidden;    /* scroll orizzontale inibito */                            
+      }
+    /* The navigation bar */
+    .navbar {
+      z-index: 9999;
+      overflow: hidden;
+      background-color: #333;
+      position: sticky;
+      /* Set the navbar to fixed position */
+      top: 0;
+      /* Position the navbar at the top of the page */
+      width: 100%;
+      /* Full width */
+    }
+
+    /* Links inside the navbar */
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+
+    }
+
+
+    .txt {
+      float: right;
+      display: block;
+      color: #f2f2f2;
+      text-align: left;  
+      padding: 14px 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      font-weight: 300;
+    }
+	
+    .logo2 {
+      float: right;
+    }       
+   
+   
+   	 .iconData {  
+      font-size: 23px; 
+      color: #FFFFFF;  
+      margin-top: 15px;   	   
+	  margin-right: 30px;         
+    }  
+	
+	 .iconLevel {  
+      font-size: 23px; 
+      color: #80B1E0;    
+	  margin-right: 30px;               
+    }  
+	
+		 .iconMinLevel {  
+      font-size: 23px; 
+      color: #F3F31A;     
+	  margin-right: 30px;            
+    }         
+	
+       .iconMaxLevel {  
+      font-size: 23px; 
+      color: #b22222;           
+	  margin-right: 30px;            
+    }         
+	
+	
+	
+
+    /* Change background on mouse-over */
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+
+    .app-container {
+      padding: 2px;
+      padding-top: 20px;
+      background-color: black;
+      display: flex;
+      flex-direction: row;
+      /* align-items: center; */
+      width: 100vw;
+      min-height: 100vh;
+    }
+   
+    .fore-container, .obs-container {
+      margin:10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+   
+    .fore-container {
+      flex: 1 1 auto;
+    }
+
+    .upperRow {
+      /* padding-top: 30px; */
+      padding-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      /* flex-wrap: wrap; */
+    }
+
+    @media screen and (max-width: 992px) {
+      .upperRow {
+        /* flex-direction: column; */
+      }
+    }
+
+    .windContainer {
+      background: transparent;
+      min-width: 350px;
+      min-height: 380px;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+	
+	
+	 .wsContainer {
+      background: transparent;
+	  padding-left: 150px;  
+      min-width: 550px;    
+      min-height: 380px;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+
+    .wind-chart-container {
+      background: transparent;
+      /* width: 80%; */
+      min-height: 380px;
+      flex: 1 1 auto;
+      /* display: flex; */
+    }
+    .imgsat {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      max-width: 650px;
+      /* max-height: 402px; */
+      align-self: center;
+      object-fit: cover;
+    }
+	
+	
+	 .imgRight {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      max-width: 700px;  
+      align-self: center;
+      object-fit: cover;  
+    }
+
+
+	
+
+    iframe {
+      border: none;
+      overflow: hidden;
+      flex: 1 1 auto;
+      max-height: 400px;
+      display: flex;
+    }
+
+    @media screen and (max-width: 1730px) {
+      .app-container{
+        flex-direction: column;
+      }
+      .fore-container {
+        flex-direction: row-reverse;
+        min-height: 400px;
+      }
+      iframe {
+        height: auto;
+        padding: 20px;
+        
+      }
+      .imgsat {
+        height: auto;
+        
+        margin: 20px;
+        
+      }
+      
+    }    
+
+    @media screen and (max-width: 1380px) {
+      
+      
+      .imgsat {
+        max-width: 450px;
+        align-self: unset;    
+      }
+      
+    }  
+
+    @media screen and (max-width: 1200px) {
+      
+      .upperRow {
+        /* flex-wrap: wrap; */
+      }
+      .imgsat {
+        max-width: 450px
+      }
+      .windContainer {
+      
+      min-width: 300px;
+      }
+    }  
+    @media screen and (max-width: 1100px) {
+      
+      .fore-container {
+        flex-direction: column;
+      }
+      .imgsat{
+        align-self: center;
+        max-width: 95%;
+        }
+        iframe {
+        flex: 1 1 400px;
+        padding: 20px;
+        
+      }
+    }  
+    @media screen and (max-width: 980px) {
+      
+      .upperRow {
+        flex-direction: column;
+      }
+      .windContainer{
+        flex: 1 1 400px;
+        align-self: center;
+      }
+    }  
+    @media screen and (max-width: 700px) {
+      
+      .txt {
+        font-size: 15px;
+      }
+      .navbar img{
+        width: 250px;
+        object-fit: scale-down;
+      }
+
+    }  
+
+    .windLabels {
+      padding-top: 0px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+	
+	
+hr {
+    background-color:#999;
+    border-width:0;
+    color:#999;
+    height:1px;
+    line-height:0;
+    margin: 0.5em 0;
+    text-align: center;
+} 
+
+
+
+    .boxTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 17px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FFCC99; 
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+    .windTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+
+    .windSpeed {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 30px; 
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #00ACEC;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    } 
+
+    .windDir {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 30px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FEFE00;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+    .data {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FFFFFF;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+
+   
+
+    
+    .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
+      font-size: 14px !important;
+      /* fill: black !important; */
+    }
+    
+    
+  </style>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+</head>
+
+
+  
+<body>
+  <div class="navbar">     
+
+    <div class="logo">
+ <a href="https://www.meteolivevco.it/" target="_blank"><img src="img/logo_vco_irsa.png" alt="logo meteo live vco" > </a>                   
+    </div>
+    <div id="info" class="txt"></div>  
+	
+	    <div id="logo" class="logo2">          
+    </div>  
+	 
+  </div>
+
+     
+
+
+  <div class="app-container">
+    <div class="obs-container">
+      <div class="upperRow"> 
+	  
+	  
+
+	 
+	  
+        <div class="windContainer" style="min-width: 255px;"> 
+
+          <div class="windLabels"> 
+
+	            <div>
+					<div class="iconData"><i class="material-icons">access_time</i></div>  
+					<div class="iconLevel"><i class="material-icons">height</i></div>   
+					<div class="iconMinLevel"><i class="material-icons">vertical_align_bottom</i></div>        
+		            <div class="iconMaxLevel"><i class="material-icons">vertical_align_top</i></div>                   	  	          			
+			  </div> 
+
+
+
+              <div class="boxTitle">Valore attuale <a id="history" href="history.html" target="_blank">(>Archivio Storico)</a></div> 
+              <div class="windTitle">Altezza Livello idrometrico (m)</div>    
+              <div class="windSpeed" id="windSpeedTxt"></div>
+  
+              <div style="padding-right: 20px;">
+                <div class="data" id="dataTimestamp"></div>
+              </div>
+                 <hr> 
+              <div class="boxTitle">Estremi ultime 24h</div> 
+              <div class="windTitle">Livello Massimo</div>
+              <div class="windSpeed" id="maxWindSpeedTxt"></div>
+              <div class="windTitle">Livello Minimo</div>
+              <div class="windDir" id="maxWindDirTxt"></div>
+              <div style="padding-right: 20px;">
+              <div class="data" id="maxDataTimestamp"></div>        
+			
+              </div>
+          </div>
+		  </div> 
+		  
+		  
+		  
+         
+      <div class="wsContainer">             
+	  
+		<iframe width="400" height="350" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"  src='../tm-widgets-master/demo/baveno.html'></iframe>   
+	  
+	  </div>      
+     
+  
+ 
+	              
+    		  
+      </div>         
+
+           
+
+
+      <div class="wind-chart-container" id="idrometroChartContainer"> </div>
+	  
+	  
+	
+	
+
+    </div>
+
+
+    <div class="fore-container">          
+      
+    <!--     <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/lotti/sat/sat.gif" class="imgsat" alt="sat"> --> 
+	<!-- <img src="https://www.meteolivevco.it/webcam/Baveno.jpg" class="imgCam" alt="webcam Baveno">   -->                               
+      
+	<iframe width="700" height="394" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" class="imgRight" alt="Live Cam"  src="https://www.liveincam.com/?w=930" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
+	
+	   
+		<br><br>         
+	<img src="//my.meteoblue.com/visimage/meteogram_web?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=dbd736a8113b88567f3189d1a68daa37" srcset="//my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=2615aea6782a1e380c3f272a40ee3df8 1.4x" alt="Meteogram - 5 days - Baveno"  class="imgRight" alt="Meteogramma">    
+		  
+       
+    </div>
+
+
+    </div>
+
+
+  <script src="./dist/bevano.js"></script>
+  <script>
+    
+    
+function setInnerHTML (selector, value) {
+    if(document.querySelector(selector)){
+        document.querySelector(selector).innerHTML = value;
+    }
+}
+
+
+  const config = {    
+      id: "st_19100250",
+      topic: "device/TRF001/baveno/metrics/#",
+      title: "<i class='material-icons'>place</i> Baveno Idrometro | Real Time Data",                       
+		  titlePage: "Baveno Idrometro  | Real Time Data",    
+      logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
+	    info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
+      iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",         
+  }      
+	   
+//Settings the station title
+setInnerHTML("#title", config.title);
+setInnerHTML("#titlePage", config.titlePage);                    
+setInnerHTML("#info", config.info);
+setInnerHTML("#logo", config.logo);       
+setInnerHTML("#logo", config.logo);     
+
+    if (location.protocol === 'https:') {
+        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config.topic, undefined, config.uom);
+      } else {
+        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config.topic, undefined, config.uom);
+      }
+  </script>
+</body>
+
+</html>
