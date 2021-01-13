@@ -4,12 +4,20 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="refresh" content="900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+  
+  
   <title id="titlePage"></title>        
   
   <style>
+  
+
+  
     body{
       margin:0px;
       background-color: black;
+	  overflow-x: hidden;    /* scroll orizzontale inibito */                            
       }
     /* The navigation bar */
     .navbar {
@@ -51,6 +59,34 @@
       float: right;
     }       
    
+   
+   	 .iconData {  
+      font-size: 23px; 
+      color: #FFFFFF;  
+      margin-top: 15px;   	   
+	  margin-right: 30px;         
+    }  
+	
+	 .iconLevel {  
+      font-size: 23px; 
+      color: #80B1E0;    
+	  margin-right: 30px;               
+    }  
+	
+		 .iconMinLevel {  
+      font-size: 23px; 
+      color: #F3F31A;     
+	  margin-right: 30px;            
+    }         
+	
+       .iconMaxLevel {  
+      font-size: 23px; 
+      color: #b22222;           
+	  margin-right: 30px;            
+    }         
+	
+	
+	
 
     /* Change background on mouse-over */
     .navbar a:hover {
@@ -103,6 +139,16 @@
       flex: 1 1 auto;
       overflow: hidden;
     }
+	
+	
+	 .wsContainer {
+      background: transparent;
+	  padding-left: 150px;  
+      min-width: 550px;    
+      min-height: 380px;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
 
     .wind-chart-container {
       background: transparent;
@@ -120,6 +166,16 @@
       align-self: center;
       object-fit: cover;
     }
+	
+	
+	 .imgRight {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      max-width: 700px;  
+      align-self: center;
+      object-fit: cover;  
+    }
 
 
 	
@@ -127,7 +183,6 @@
     iframe {
       border: none;
       overflow: hidden;
-      padding-top: 5%;
       flex: 1 1 auto;
       max-height: 400px;
       display: flex;
@@ -160,7 +215,7 @@
       
       .imgsat {
         max-width: 450px;
-        align-self: unset;
+        align-self: unset;    
       }
       
     }  
@@ -320,89 +375,159 @@ hr {
 
   
 <body>
-  <div class="navbar">
+  <div class="navbar">     
 
     <div class="logo">
-      <a href="https://www.navimeteo.com/marine-weather/portfolio/environmental-monitoring" target="_blank"><img
-          src="img/Logo-Navimeteo_2.png" alt="logo navimeteo" > </a>
+ <a href="https://www.meteolivevco.it/" target="_blank"><img src="img/logo_vco_irsa.png" alt="logo meteo live vco" > </a>                   
     </div>
     <div id="info" class="txt"></div>  
 	
-	    <div id="logo" class="logo2">   
-      <!-- <a href="https://www.nci.org.uk/capecornwall" target="_blank"><img src="img/nci.png" alt="logo customer" > </a>       -->
+	    <div id="logo" class="logo2">          
     </div>  
 	 
   </div>
 
- 
+     
 
 
   <div class="app-container">
     <div class="obs-container">
-      <div class="upperRow">
-        
+      <div class="upperRow"> 
+	  
+	  
+
+	 
+	  
+        <div class="windContainer" style="min-width: 255px;"> 
 
           <div class="windLabels"> 
+
+	            <div>
+					<div class="iconData"><i class="material-icons">access_time</i></div>  
+					<div class="iconLevel"><i class="material-icons">height</i></div>   
+					<div class="iconMinLevel"><i class="material-icons">vertical_align_bottom</i></div>        
+		            <div class="iconMaxLevel"><i class="material-icons">vertical_align_top</i></div>                   	  	          			
+			  </div> 
+
+
+
+              <div class="boxTitle">Valore attuale <a id="history" href="history.html" target="_blank">(>Archivio Storico)</a></div> 
+              <div class="windTitle">Altezza Livello idrometrico (m)</div>    
+              <div class="windSpeed" id="idormetroHTLastxt"></div>
+  
               <div style="padding-right: 20px;">
                 <div class="data" id="dataTimestamp"></div>
               </div>
+                 <hr> 
+              <div class="boxTitle">Estremi ultime 24h</div> 
+              <div class="windTitle">Livello Massimo</div>
+              <div class="windSpeed" id="maxIdroTxt"></div>
+              <div class="windTitle">Livello Minimo</div>
+              <div class="windDir" id="minIdroTxt"></div>
+              <div style="padding-right: 20px;">
+              <div class="data" id="maxDataTimestamp"></div>        
+			
+              </div>
           </div>
-          
-        </div>
+		  </div> 
+		  
+		  
+		  
+         
+      <div class="wsContainer">             
+	  
+		<iframe width="400" height="350" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"  src='https://navimeteoharbour.com/app/tm-widgets-master/demo/baveno.html'></iframe>   
+	  
+	  </div>      
+     
+  
+ 
+	              
+    		  
+      </div>         
 
-      </div>
-
-
+           
 
 
       <div class="wind-chart-container" id="idrometroChartContainer"> </div>
+	  
+	  
+	
+	
 
     </div>
 
 
-    <div class="fore-container">
+    <div class="fore-container">          
       
-        <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/falmouth_haven/sat/sat.gif"
-          class="imgsat" alt="sat">
+    <!--     <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/lotti/sat/sat.gif" class="imgsat" alt="sat"> --> 
+	<!-- <img src="https://www.meteolivevco.it/webcam/Baveno.jpg" class="imgCam" alt="webcam Baveno">   -->                               
+      
+	<iframe width="700" height="394" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" class="imgRight" alt="Live Cam"  src="https://www.liveincam.com/?w=930" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
+	
+	   
+		<br><br>         
+	<img src="//my.meteoblue.com/visimage/meteogram_web?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=dbd736a8113b88567f3189d1a68daa37" srcset="//my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=2615aea6782a1e380c3f272a40ee3df8 1.4x" alt="Meteogram - 5 days - Baveno"  class="imgRight" alt="Meteogramma">    
+		  
+       
     </div>
 
 
-  </div>
+    </div>
 
 
   <script src="./dist/idrometro.js"></script>
   <script>
     
     
-function setInnerHTML (selector, value) {
+  function setInnerHTML (selector, value) {
     if(document.querySelector(selector)){
         document.querySelector(selector).innerHTML = value;
     }
-}
+  }
 
+  
 
   const config = { 
-      id: "st_19100250",
+    st_baveno:  {    
+      id: "st_baveno",
       topic: "device/TRF001/baveno/metrics/#",
-      title: "<i class='material-icons'>place</i> Verbania Idrometro | Real Time Data",               
-		  titlePage: "Verbania Idrometro  | Real Time Data",    
-      logo: "<a href='https://www.retemet.com/' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",    
-	    info: "Idrometro Verbania <br/>44&deg;18&#39;N - 09&deg;19&#39;E<br/>Real Time Data",      
+      title: "<i class='material-icons'>place</i> Baveno Idrometro | Real Time Data",                       
+		  titlePage: "Baveno Idrometro  | Real Time Data",    
+      logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
+	    info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
       iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",         
-  }      
-	    
+  },
+  st_sml:  {    
+      id: "st_sml",
+      topic: "device/TRF001/sml/metrics/#",
+      title: "<i class='material-icons'>place</i> Baveno Idrometro | Real Time Data",                       
+		  titlePage: "Baveno Idrometro  | Real Time Data",    
+      logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
+	    info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
+      iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266", 
+    }  
+  }     
+  let parsedUrl = new URL(window.location.href);
+  let _id = parsedUrl.searchParams.get("id") || "baveno"
+  let st_id = "st_" + _id;
+  st_id = config[st_id] ? st_id : "st_baveno"     
+	   
 //Settings the station title
-setInnerHTML("#title", config.title);
-setInnerHTML("#titlePage", config.titlePage);                    
-setInnerHTML("#info", config.info);
-setInnerHTML("#logo", config.logo);       
-setInnerHTML("#logo", config.logo);     
-
-    if (location.protocol === 'https:') {
-        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config.topic, undefined, config.uom);
+  setInnerHTML("#title", config.title);
+  setInnerHTML("#titlePage", config.titlePage);                    
+  setInnerHTML("#info", config.info);
+  setInnerHTML("#logo", config.logo);       
+  setInnerHTML("#logo", config.logo);     
+  fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id='+config[st_id].id).then(function (response) {
+      return response.json();
+    }).then(function (data = []) {
+      if (location.protocol === 'https:') {
+        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic, data, config[st_id].uom);
       } else {
-        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config.topic, undefined, config.uom);
+        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic, data, config[st_id].uom);
       }
+    });
   </script>
 </body>
 

@@ -10,7 +10,8 @@ export const UOM = {
       return beaufortFromKnt(ms/0.514444);
     } }
 } 
-export const setTZ = ( time ) => time.includes("Z") ? values.time : values.time + "Z";
+export const puntiToQuota = (punti) => (punti / 1000) + 184.17; // da mm su livello del mare a quota lago
+export const setTZ = ( time ) => time.includes("Z") ? time : time + "Z";
 const kntLimits = [1,4,7,11,17,22,28,34,41,48,56,63];
 
 const beaufortFromKnt = function(knt) {
@@ -37,6 +38,20 @@ export function initSeries(data = [],uomUtils, maxData = 380) {
   
   
   }
+  export function initSeriesIdrometro(data = [], maxData = 60) {
+    return data.slice(0, maxData).reverse().reduce(function (acc, values) {
+      if(!values) return acc;
+      const [, , punti] = values.inst;
+      const time = setTZ(values.time);
+      const timestamp = new Date(time);
+      acc.idrometro.push([(timestamp.getTime()), puntiToQuota(punti)]);
+      return acc
+    }, { idrometro: [] });
+  
+  
+  }
+
+
   export function broker(config, topic){
     const client = mqtt.connect(config.server, config.options);
   

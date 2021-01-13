@@ -4,6 +4,7 @@
  let seconds = 600;
 let minutesText;
     let minutes = seconds / 60;
+    const quotaFormatter = new Intl.NumberFormat('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2})
 export default (idrometroData = [], uom = "mm") => {
     return Highcharts.chart('idrometroChartContainer', {
         chart: {
@@ -32,9 +33,11 @@ export default (idrometroData = [], uom = "mm") => {
                 text: "Altezza"
             },
             labels: {
-                format: "{value} " + uom
+                formatter: function () {
+                    return  quotaFormatter.format(this.value) + " " + uom;
+                }            
+                
             },
-            allowDecimals: true,
             opposite: false
         }],
         plotOptions: {

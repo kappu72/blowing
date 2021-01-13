@@ -42,7 +42,8 @@ let config = {
         logo: "<a href='https://www.retemet.com/' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",    
 	    info: "Torre Marina Chiavari <br/>44&deg;18&#39;N - 09&deg;19&#39;E<br/>Real Time Wind Data",      
         iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",         
-    }      
+    }
+      
 	     
 	
   }
