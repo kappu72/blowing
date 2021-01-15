@@ -44,7 +44,7 @@ export function initSeries(data = [],uomUtils, maxData = 380) {
       const [, , punti] = values.inst;
       const time = setTZ(values.time);
       const timestamp = new Date(time);
-      acc.idrometro.push([(timestamp.getTime()), puntiToQuota(punti)]);
+      acc.idrometro.push([(timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000)), puntiToQuota(punti)]);
       return acc
     }, { idrometro: [] });
   

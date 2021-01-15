@@ -7,6 +7,7 @@ let minutesText;
     const quotaFormatter = new Intl.NumberFormat('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2})
 export default (idrometroData = [], uom = "mm") => {
     return Highcharts.chart('idrometroChartContainer', {
+        
         chart: {
             backgroundColor: 'rgba(0,0,0,0)',
             animation: {
