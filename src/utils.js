@@ -10,6 +10,7 @@ export const UOM = {
       return beaufortFromKnt(ms/0.514444);
     } }
 } 
+export const quotaFormatter = new Intl.NumberFormat('it-IT', { minimumFractionDigits: 3, maximumFractionDigits: 3})
 export const puntiToQuota = (punti) => (punti / 1000) + 184.17; // da mm su livello del mare a quota lago
 export const setTZ = ( time ) => time.includes("Z") ? time : time + "Z";
 const kntLimits = [1,4,7,11,17,22,28,34,41,48,56,63];
