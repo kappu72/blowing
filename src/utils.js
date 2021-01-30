@@ -39,13 +39,13 @@ export function initSeries(data = [],uomUtils, maxData = 380) {
   
   
   }
-  export function initSeriesIdrometro(data = [], maxData = 60) {
+  export function initSeriesIdrometro(data = [], maxData = 60, transform = puntiToQuota) {
     return data.slice(0, maxData).reverse().reduce(function (acc, values) {
       if(!values) return acc;
       const [, , punti] = values.inst;
       const time = setTZ(values.time);
       const timestamp = new Date(time);
-      acc.idrometro.push([(timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000)), puntiToQuota(punti)]);
+      acc.idrometro.push([(timestamp.getTime() - (timestamp.getTimezoneOffset() * 60000)), transform(punti)]);
       return acc
     }, { idrometro: [] });
   

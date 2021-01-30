@@ -6,7 +6,7 @@
 const Highcharts = window.Highcharts;
 
 
- export default ( data = [], uom = "m", quotaFormatter) => {
+ export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro' }, uom = "m", quotaFormatter} ) => {
 
     // create the IdroChart
     return  Highcharts.stockChart("windHistoryChartContainer", {
@@ -27,7 +27,7 @@ const Highcharts = window.Highcharts;
             }
         },
         subtitle: {
-            text: 'Altezza livello idrometrico slm'
+            text: name
         },
         legend: {
             enabled: true
@@ -50,7 +50,7 @@ const Highcharts = window.Highcharts;
         },
         yAxis: [{
             title: {
-                text: 'Livello Idrometrico'
+                text: axisTitle
             },
             labels: {
                 formatter: function () {

@@ -5,7 +5,7 @@
 let minutesText;
     let minutes = seconds / 60;
     
-export default (idrometroData = [], uom = "m", quotaFormatter) => {
+export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro' }, uom = "m", quotaFormatter }) => {
     return Highcharts.chart('idrometroChartContainer', {
         
         chart: {
@@ -31,7 +31,7 @@ export default (idrometroData = [], uom = "m", quotaFormatter) => {
         },
         yAxis: [{ // first axis
             title: {
-                text: "Altezza"
+                text: axisTitle
             },
             labels: {
                 formatter: function () {
@@ -47,12 +47,12 @@ export default (idrometroData = [], uom = "m", quotaFormatter) => {
             }
         },
         series: [{
-            name: "Altezza Idrometro",
+            name,
             tooltip: {
                 valueSuffix: " " + uom,
                 valueDecimals: 3,
             },
-            data: idrometroData,
+            data,
             zIndex: 1,
             color: '#00acec'
         }]
