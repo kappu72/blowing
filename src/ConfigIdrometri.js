@@ -23,8 +23,9 @@ st_sml:  {
     logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
     info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
     iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266", 
-    transform: (punti) => (punti / 1000),
-    chartCfg: {name: 'Idrometro Comune di Santa Margherita Ligure', axisTitle:'Livello idrometrico (m)'}
+    transform: (punti) => ((punti - 4686) / 10),
+    uom: 'cm',
+    chartCfg: {name: 'Idrometro Comune di Santa Margherita Ligure', axisTitle:'Livello idrometrico (cm)'}
   }  
 }     
 let parsedUrl = new URL(window.location.href);
