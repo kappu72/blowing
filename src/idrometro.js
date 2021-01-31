@@ -40,9 +40,9 @@ window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = 
       const values = JSON.parse(payload);
       const { max, min } = values;
       if (!!max) {
-        maxH.innerHTML = quotaFormatter.forma(transform(max.inst[2])) + "<br/><span>" + date.format(new Date(max.time.replace("+00Z", "Z")), _format, false) + "</span>";
+        maxH.innerHTML = quotaFormatter.format(transform(max.inst[2])) + "<br/><span>" + date.format(new Date(max.time.replace("+00Z", "Z")), _format, false) + "</span>";
       } if(!!min) {
-      minH.innerHTML = quotaFormatter.forma(transform(min.inst[2])) + "<br/><span>" + date.format(new Date(min.time.replace("+00Z", "Z")), _format, false) + "</span>";
+      minH.innerHTML = quotaFormatter.format(transform(min.inst[2])) + "<br/><span>" + date.format(new Date(min.time.replace("+00Z", "Z")), _format, false) + "</span>";
     }
   }
 
