@@ -13,6 +13,8 @@ const config = {
     info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
     iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",
     transform: (punti) => (punti / 1000) + 184.17,
+    uom: 'm',
+    uomLabel: '(m) s.l.m.',
     chartCfg: {name: 'Idrometro Comune di Baveno', axisTitle:'Livello idrometrico (m, s.l.m.)'}
 },
 st_sml:  {    
@@ -25,6 +27,7 @@ st_sml:  {
     iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266", 
     transform: (punti) => ((punti - 4686) / 10),
     uom: 'cm',
+    uomLabel: '(cm)',
     chartCfg: {name: 'Idrometro Comune di Santa Margherita Ligure', axisTitle:'Livello idrometrico (cm)'}
   }  
 }     
@@ -37,4 +40,5 @@ st_id = config[st_id] ? st_id : "st_baveno"
 setInnerHTML("#title", config[st_id].title);
 setInnerHTML("#titlePage", config[st_id].titlePage);                      
 setInnerHTML("#info", config[st_id].info);
-setInnerHTML("#logo", config[st_id].logo);     
+setInnerHTML("#logo", config[st_id].logo);
+setInnerHTML("#uom_label", config[st_id].uom);     
