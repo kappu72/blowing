@@ -41,4 +41,6 @@ setInnerHTML("#title", config[st_id].title);
 setInnerHTML("#titlePage", config[st_id].titlePage);                      
 setInnerHTML("#info", config[st_id].info);
 setInnerHTML("#logo", config[st_id].logo);
-setInnerHTML("#uom_label", config[st_id].uomLabel);     
+setInnerHTML("#uom_label", config[st_id].uomLabel);  
+setInnerHTML("#uom_label_max", config[st_id].uomLabel);  
+setInnerHTML("#uom_label_min", config[st_id].uomLabel);     
