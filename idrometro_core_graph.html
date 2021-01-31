@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="refresh" content="900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+  
+  
+  <title id="titlePage"></title>        
+  
+  <style>
+    body{
+      margin:0px;
+      background-color: #FFFFFF;                 
+      }
+    /* The navigation bar */
+    .navbar {
+      z-index: 9999;
+      overflow: hidden;
+      background-color: #333;
+      position: sticky;
+      /* Set the navbar to fixed position */
+      top: 0;
+      /* Position the navbar at the top of the page */
+      width: 100%;
+      /* Full width */
+    }
+
+    /* Links inside the navbar */
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+
+    }
+
+
+    .txt {
+      float: right;
+      display: block;
+      color: #f2f2f2;
+      text-align: right;
+      padding: 14px 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+
+
+    /* Change background on mouse-over */
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+
+    .app-container {
+      padding: 2px;
+      padding-top: 20px;
+      background-color: #FFFFFF;     
+      display: flex;
+      flex-direction: row;
+      /* align-items: center; */
+      width: 100vw;
+      min-height: 100vh;
+    }
+   
+    .fore-container, .obs-container {
+      margin:10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .obs-container {
+      flex: 1 1 auto;
+    }
+    .fore-container {
+      flex: 1 1 auto;
+    }
+
+    .upperRow {
+      /* padding-top: 30px; */
+      /* padding-bottom: 30px; */
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      /* flex-wrap: wrap; */
+    }
+
+
+    .idroContainer {       
+      background: transparent;
+      min-width: 350px;
+      /* min-height: 20px; */
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+
+    .wind-chart-container {
+      background: transparent;
+      width: 95%;                           
+      min-height: 600px;
+      flex: 1 1 auto;
+      /* display: flex; */
+      margin: 30px;
+    }
+    
+   	 .iconLevel {  
+	  margin-top: 52px;                      
+      font-size: 30px; 
+      color: #80B1E0;    
+	  margin-right: 10px;                 
+    }  
+   
+   	 .iconData {  
+      font-size: 23px; 
+      color: #FFFFFF;  
+	  margin-right: 10px;           
+    }  
+	
+       .iconMaxLevel {  
+	  margin-top: 70px;                
+      font-size: 23px; 
+      color: #b22222;           
+	  margin-right: 10px;            
+    }         
+
+
+      .iconMinLevel {  
+	  margin-top: 30px;      
+      font-size: 23px; 
+      color: #F3F31A;     
+	  margin-right: 10px;              
+    }        
+
+  @media screen and (max-width: 700px) {
+      
+      .txt {
+        font-size: 15px;
+      }
+      .navbar img{
+        width: 250px;
+        object-fit: scale-down;
+      }
+
+    }  
+
+    .windLabels {
+      padding-top: 0px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .boxTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 17px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FFCC99; 
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }      
+
+    .windTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+
+
+    .subTitle {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 11px;  
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+    .windSpeed {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px; 
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #00ACEC;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+    .windDir {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 30px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FEFE00;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+       
+
+		    .levelMax {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #b22222;  
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+	
+	    .levelMin {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FEFE00;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+	
+	
+    .data {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FFFFFF;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+
+   
+    .highcharts-range-selector-buttons txt tspan {
+      color: white;
+    }
+    
+    .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
+      font-size: 14px !important;
+    }
+    
+    
+  </style>        
+
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+</head>
+
+
+  
+<body>
+
+
+
+           
+
+  <div class="app-container">
+    <div class="obs-container">
+   
+   
+   
+   
+         <div class="upperRow"> 
+	  
+	  
+	    
+    
+		  
+	  
+        <div class="idroContainer" style="min-width: 255px;">   
+
+          <div class="windLabels"> 
+
+
+       <div class="boxTitle"><a id="history" href="idrometro_core_history.html" target="_blank"></a></div>                   
+                   <!-- <div class="windTitle">Altezza Livello idrometrico (m)</div>  -->          
+              
+			  <table>
+			  <tr><td><div class="windTitle">Altezza Livello idrometrico (m) s.l.m.</div></td> <td><div class="windSpeed" id="idormetroHTLastxt"></div></td> <td><div class="windTitle" id="dataTimestamp"></div></td></tr>
+			  
+		        <tr><td><div class="subTitle">Altezza Max ultime 24 ore (m) s.l.m.</div></td> <td><div class="subTitle" id="maxIdroTxt"></div></td> <td><div class="subTitle" id="maxDataTimestamp"></div>  </td></tr>
+			  
+			    <tr><td><div class="subTitle">Altezza Min ultime 24 ore (m) s.l.m.</div></td><td><div class="subTitle" id="minIdroTxt"></div></td> <td><div class="subTitle" id="minDataTimestamp"></div>  </td></tr>
+			  </table>
+			    			
+            </div>    
+          </div>  
+		  </div>       
+		      
+	 
+
+	     <div class="wind-chart-container" id="idrometroChartContainer"> </div>     
+      </div>     
+    
+   
+           
+      
+
+
+    </div>
+
+
+
+    </div>
+
+
+  <script src="./dist/idrometro.js"></script>
+  <script>
+    
+    
+  function setInnerHTML (selector, value) {
+    if(document.querySelector(selector)){
+        document.querySelector(selector).innerHTML = value;
+    }
+  }
+
+  
+
+  const config = { 
+    st_baveno:  {    
+      id: "st_baveno",
+      topic: "device/TRF001/baveno/metrics/#",
+      title: "<i class='material-icons'>place</i> Baveno Idrometro | Real Time Data",                       
+		  titlePage: "Baveno Idrometro  | Real Time Data",    
+      logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
+	    info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
+      iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",         
+  },
+  st_sml:  {    
+      id: "st_sml",
+      topic: "device/TRF001/sml/metrics/#",
+      title: "<i class='material-icons'>place</i> Baveno Idrometro | Real Time Data",                       
+		  titlePage: "Baveno Idrometro  | Real Time Data",    
+      logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",         
+	    info: "Idrometro Lago Maggiore <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",       
+      iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266", 
+    }  
+  }     
+  let parsedUrl = new URL(window.location.href);
+  let _id = parsedUrl.searchParams.get("id") || "baveno"
+  let st_id = "st_" + _id;
+  st_id = config[st_id] ? st_id : "st_baveno"     
+	   
+//Settings the station title
+  setInnerHTML("#title", config[st_id].title);
+  setInnerHTML("#titlePage", config[st_id].titlePage);                      
+  setInnerHTML("#info", config[st_id].info);
+  setInnerHTML("#logo", config[st_id].logo);              
+  //setInnerHTML("#logo", config.logo);     
+  
+  
+  
+  document.querySelector("#history").setAttribute("href", "idrometro_core_history.html?id=" + _id)            
+  fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id='+config[st_id].id).then(function (response) {
+      return response.json();
+    }).then(function (data = []) {
+      if (location.protocol === 'https:') {
+        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id].topic, data, config[st_id].uom);
+      } else {
+        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id].topic, data, config[st_id].uom);
+      }
+    });
+  </script>
+</body>
+
+</html>
