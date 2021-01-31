@@ -2,23 +2,22 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <meta http-equiv="refresh" content="900">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
-  
-  
-  <title id="titlePage"></title>        
-  
-  <style>
-  
 
-  
-    body{
-      margin:0px;
+
+
+  <title id="titlePage"></title>
+
+  <style>
+    body {
+      margin: 0px;
       background-color: black;
-	  overflow-x: hidden;    /* scroll orizzontale inibito */                            
-      }
+      overflow-x: hidden;
+      /* scroll orizzontale inibito */
+    }
+
     /* The navigation bar */
     .navbar {
       z-index: 9999;
@@ -48,47 +47,47 @@
       float: right;
       display: block;
       color: #f2f2f2;
-      text-align: left;  
+      text-align: left;
       padding: 14px 16px;
       font-family: 'Courier New', Courier, monospace;
       font-size: 20px;
       font-weight: 300;
     }
-	
+
     .logo2 {
       float: right;
-    }       
-   
-   
-   	 .iconLevel {  
-	  margin-top: 28px;           
-      font-size: 30px; 
-      color: #80B1E0;    
-	  margin-right: 10px;                 
-    }  
-   
-   	 .iconData {  
-      font-size: 23px; 
-      color: #FFFFFF;  
-	  margin-right: 10px;           
-    }  
-	
-       .iconMaxLevel {  
-	  margin-top: 70px;                
-      font-size: 23px; 
-      color: #b22222;           
-	  margin-right: 10px;            
-    }         
+    }
 
 
-      .iconMinLevel {  
-	  margin-top: 30px;      
-      font-size: 23px; 
-      color: #F3F31A;     
-	  margin-right: 10px;              
-    }         
-	
-	
+    .iconLevel {
+      margin-top: 28px;
+      font-size: 30px;
+      color: #80B1E0;
+      margin-right: 10px;
+    }
+
+    .iconData {
+      font-size: 23px;
+      color: #FFFFFF;
+      margin-right: 10px;
+    }
+
+    .iconMaxLevel {
+      margin-top: 70px;
+      font-size: 23px;
+      color: #b22222;
+      margin-right: 10px;
+    }
+
+
+    .iconMinLevel {
+      margin-top: 30px;
+      font-size: 23px;
+      color: #F3F31A;
+      margin-right: 10px;
+    }
+
+
 
     /* Change background on mouse-over */
     .navbar a:hover {
@@ -107,14 +106,15 @@
       width: 100vw;
       min-height: 100vh;
     }
-   
-    .fore-container, .obs-container {
-      margin:10px;
+
+    .fore-container,
+    .obs-container {
+      margin: 10px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
-   
+
     .fore-container {
       flex: 1 1 auto;
     }
@@ -133,31 +133,31 @@
         /* flex-direction: column; */
       }
     }
-	
-	
+
+
     .iconContainer {
       background: transparent;
       min-width: 20px;
       min-height: 380px;
       flex: 1 1 auto;
-      overflow: hidden;        
-    }    
-	
+      overflow: hidden;
+    }
+
 
     .idroContainer {
       background: transparent;
-	  padding-left: 20px;  
+      padding-left: 20px;
       min-width: 350px;
       min-height: 380px;
       flex: 1 1 auto;
       overflow: hidden;
     }
-	
-	
-	 .wsContainer {
+
+
+    .wsContainer {
       background: transparent;
-	  padding-left: 150px;  
-      min-width: 550px;    
+      padding-left: 150px;
+      min-width: 550px;
       min-height: 380px;
       flex: 1 1 auto;
       overflow: hidden;
@@ -170,6 +170,7 @@
       flex: 1 1 auto;
       /* display: flex; */
     }
+
     .imgsat {
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -179,19 +180,19 @@
       align-self: center;
       object-fit: cover;
     }
-	
-	
-	 .imgRight {
+
+
+    .imgRight {
       border: 1px solid #ddd;
       border-radius: 4px;
       padding: 5px;
-      max-width: 700px;  
+      max-width: 700px;
       align-self: center;
-      object-fit: cover;  
+      object-fit: cover;
     }
 
 
-	
+
 
     iframe {
       border: none;
@@ -202,104 +203,116 @@
     }
 
     @media screen and (max-width: 1730px) {
-      .app-container{
+      .app-container {
         flex-direction: column;
       }
+
       .fore-container {
         flex-direction: row-reverse;
         min-height: 400px;
       }
+
       iframe {
         height: auto;
         padding: 20px;
-        
+
       }
+
       .imgsat {
         height: auto;
-        
+
         margin: 20px;
-        
+
       }
-      
-    }    
+
+    }
 
     @media screen and (max-width: 1380px) {
-      
-      
+
+
       .imgsat {
         max-width: 450px;
-        align-self: unset;    
+        align-self: unset;
       }
-      
-    }  
+
+    }
 
     @media screen and (max-width: 1200px) {
-      
+
       .upperRow {
         /* flex-wrap: wrap; */
       }
+
       .imgsat {
         max-width: 450px
       }
+
       .windContainer {
-      
-      min-width: 300px;
+
+        min-width: 300px;
       }
-    }  
+    }
+
     @media screen and (max-width: 1100px) {
-      
+
       .fore-container {
         flex-direction: column;
       }
-      .imgsat{
+
+      .imgsat {
         align-self: center;
         max-width: 95%;
-        }
-        iframe {
+      }
+
+      iframe {
         flex: 1 1 400px;
         padding: 20px;
-        
+
       }
-    }  
+    }
+
     @media screen and (max-width: 980px) {
-      
+
       .upperRow {
         flex-direction: column;
       }
-      .windContainer{
+
+      .windContainer {
         flex: 1 1 400px;
         align-self: center;
       }
-    }  
+    }
+
     @media screen and (max-width: 700px) {
-      
+
       .txt {
         font-size: 15px;
       }
-      .navbar img{
+
+      .navbar img {
         width: 250px;
         object-fit: scale-down;
       }
 
-    }  
+    }
 
     .windLabels {
       padding-top: 0px;
-      padding-left: 0px;   
+      padding-left: 0px;
       display: flex;
       flex-direction: column;
     }
-	
-	
-hr {
-    background-color:#999;
-    border-width:0;
-    color:#999;
-    height:1px;
-    line-height:0;
-    margin: 0.5em 0;
-    text-align: center;
-} 
+
+
+    hr {
+      background-color: #999;
+      border-width: 0;
+      color: #999;
+      height: 1px;
+      line-height: 0;
+      margin: 0.5em 0;
+      text-align: center;
+    }
 
 
 
@@ -308,7 +321,7 @@ hr {
       font-size: 17px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #FFCC99; 
+      color: #FFCC99;
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
@@ -332,7 +345,7 @@ hr {
 
     .windSpeed {
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 30px; 
+      font-size: 30px;
       letter-spacing: 2px;
       word-spacing: 2px;
       color: #00ACEC;
@@ -341,12 +354,12 @@ hr {
       font-style: normal;
       font-variant: normal;
       text-transform: none;
-    } 
-	
-	
+    }
 
-	
-	
+
+
+
+
 
     .windDir {
       font-family: "Arial Black", Gadget, sans-serif;
@@ -360,26 +373,26 @@ hr {
       font-variant: normal;
       text-transform: none;
     }
-	
-	
-		    .levelMax {
+
+
+    .levelMax {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 15px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #b22222;  
+      color: #b22222;
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
       font-variant: normal;
       text-transform: none;
     }
-	
-	
-	
-	
-	
-	    .levelMin {
+
+
+
+
+
+    .levelMin {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 15px;
       letter-spacing: 2px;
@@ -391,12 +404,12 @@ hr {
       font-variant: normal;
       text-transform: none;
     }
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
     .data {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 15px;
@@ -411,15 +424,15 @@ hr {
     }
 
 
-   
 
-    
-    .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
+
+
+    .highcharts-axis-title,
+    .highcharts-axis-labels>text,
+    .highcharts-legend-item>text {
       font-size: 14px !important;
       /* fill: black !important; */
     }
-    
-    
   </style>
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -428,120 +441,127 @@ hr {
 </head>
 
 
-  
+
 <body>
-  <div class="navbar">     
+  <div class="navbar">
 
     <div class="logo">
- <a href="https://www.meteolivevco.it/" target="_blank"><img src="img/logo_vco_irsa.png" alt="logo meteo live vco" > </a>                   
+      <a href="https://www.meteolivevco.it/" target="_blank"><img src="img/logo_vco_irsa.png" alt="logo meteo live vco">
+      </a>
     </div>
-    <div id="info" class="txt"></div>  
-	
-	    <div id="logo" class="logo2">          
-    </div>  
-	 
+    <div id="info" class="txt"></div>
+
+    <div id="logo" class="logo2">
+    </div>
+
   </div>
 
-     
+
 
 
   <div class="app-container">
     <div class="obs-container">
-      <div class="upperRow"> 
-	  
-	  
-	    
-	       <div class="iconContainer"> 
-              <div>
-			  		<div class="iconLevel"><i class="material-icons">height</i></div> 
-					<div class="iconData"><i class="material-icons">access_time</i></div>  
-					<div class="iconMaxLevel"><i class="material-icons">vertical_align_top</i></div>    
-					<div class="iconMinLevel"><i class="material-icons">vertical_align_bottom</i></div>            
-		                          	  	          			
-			  </div> 
-	 	  </div> 
-		            
-		  
-	  
-        <div class="idroContainer" style="min-width: 255px;"> 
-
-          <div class="windLabels"> 
+      <div class="upperRow">
 
 
-              <!-- <div class="boxTitle">Valore attuale <a id="history" href="history.html" target="_blank">(>Archivio Storico)</a></div>  -->    
-              <div class="windTitle">Altezza Livello idrometrico (m)</div>    
-              
-			  <div class="windSpeed" id="idormetroHTLastxt"></div>              
-  
-              <div style="padding-right: 20px;">
-                <div class="data" id="dataTimestamp"></div>
-              </div>
-                 <hr> 
-              <div class="boxTitle">Estremi ultime 24h</div> 
-              <div class="windTitle">Livello Massimo</div>
-              <div class="levelMax" id="maxIdroTxt"></div> 
-			  
-			  
-              <div class="windTitle">Livello Minimo</div>
-              <div class="levelMin" id="minIdroTxt"></div>     
-              <div style="padding-right: 20px;">
-              <div class="data" id="maxDataTimestamp"></div>        
-			
-              </div>
+
+        <div class="iconContainer">
+          <div>
+            <div class="iconLevel"><i class="material-icons">height</i></div>
+            <div class="iconData"><i class="material-icons">access_time</i></div>
+            <div class="iconMaxLevel"><i class="material-icons">vertical_align_top</i></div>
+            <div class="iconMinLevel"><i class="material-icons">vertical_align_bottom</i></div>
+
           </div>
-		  </div> 
-		  
-		  
-		  
-         
-      <div class="wsContainer">             
-	  
-		<iframe width="400" height="350" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"  src='https://navimeteoharbour.com/app/tm-widgets-master/demo/baveno.html'></iframe>   
-	  
-	  </div>      
-     
-  
- 
-	              
-    		  
-      </div>         
+        </div>
 
-           
+
+
+        <div class="idroContainer" style="min-width: 255px;">
+
+          <div class="windLabels">
+
+
+            <div class="boxTitle">Valore attuale <a id="history" href="history.html" target="_blank">(>Archivio
+                Storico)</a></div>
+            <div class="windTitle">Altezza Livello idrometrico (m)</div>
+
+            <div class="windSpeed" id="idormetroHTLastxt"></div>
+
+            <div style="padding-right: 20px;">
+              <div class="data" id="dataTimestamp"></div>
+            </div>
+            <hr>
+            <div class="boxTitle">Estremi ultime 24h</div>
+            <div class="windTitle">Livello Massimo</div>
+            <div class="levelMax" id="maxIdroTxt"></div>
+
+
+            <div class="windTitle">Livello Minimo</div>
+            <div class="levelMin" id="minIdroTxt"></div>
+            <div style="padding-right: 20px;">
+              <div class="data" id="maxDataTimestamp"></div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="wsContainer">
+
+          <iframe width="400" height="350" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"
+            src='https://navimeteoharbour.com/app/tm-widgets-master/demo/baveno.html'></iframe>
+
+        </div>
+
+
+
+
+
+      </div>
+
+
 
 
       <div class="wind-chart-container" id="idrometroChartContainer"> </div>
-	  
-	  
-	
-	
+
+
+
+
 
     </div>
 
 
-    <div class="fore-container">          
-      
-    <!--     <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/lotti/sat/sat.gif" class="imgsat" alt="sat"> --> 
-	<!-- <img src="https://www.meteolivevco.it/webcam/Baveno.jpg" class="imgCam" alt="webcam Baveno">   -->                               
-      
-	<iframe width="700" height="394" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" class="imgRight" alt="Live Cam"  src="https://www.liveincam.com/?w=930" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
-	
-	   
-		<br><br>         
-	<img src="//my.meteoblue.com/visimage/meteogram_web?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=dbd736a8113b88567f3189d1a68daa37" srcset="//my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=2615aea6782a1e380c3f272a40ee3df8 1.4x" alt="Meteogram - 5 days - Baveno"  class="imgRight" alt="Meteogramma">    
-		  
-       
-    </div>
+    <div class="fore-container">
+
+      <!--     <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/lotti/sat/sat.gif" class="imgsat" alt="sat"> -->
+      <!-- <img src="https://www.meteolivevco.it/webcam/Baveno.jpg" class="imgCam" alt="webcam Baveno">   -->
+
+      <iframe width="700" height="394" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" class="imgRight"
+        alt="Live Cam" src="https://www.liveincam.com/?w=930" allowfullscreen webkitallowfullscreen mozallowfullscreen
+        oallowfullscreen msallowfullscreen></iframe>
+
+
+      <br><br>
+      <img
+        src="//my.meteoblue.com/visimage/meteogram_web?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=dbd736a8113b88567f3189d1a68daa37"
+        srcset="//my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Baveno&iso2=it&lat=45.908199&lon=8.500330&asl=205&tz=Europe%2FRome&lang=it&sig=2615aea6782a1e380c3f272a40ee3df8 1.4x"
+        alt="Meteogram - 5 days - Baveno" class="imgRight" alt="Meteogramma">
 
 
     </div>
+
+
+  </div>
 
 
   <script src="./dist/idrometro.js"></script>
   <script src="./src/ConfigIdrometri.js"></script>
   <script>
-             
-  //setInnerHTML("#logo", config.logo);     
-  fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id='+config[st_id].id).then(function (response) {
+    document.querySelector("#history").setAttribute("href", "idrometro-history.html?id=" + _id)
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id=' + config[st_id].id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
