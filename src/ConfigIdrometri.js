@@ -41,4 +41,4 @@ setInnerHTML("#title", config[st_id].title);
 setInnerHTML("#titlePage", config[st_id].titlePage);                      
 setInnerHTML("#info", config[st_id].info);
 setInnerHTML("#logo", config[st_id].logo);
-setInnerHTML("#uom_label", config[st_id].uom);     
+setInnerHTML("#uom_label", config[st_id].uomLabel);     
