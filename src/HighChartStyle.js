@@ -1,6 +1,5 @@
-export default () => {
-    Highcharts.theme = {
-    // colors: ["#00acec", "#fefe00", "#f45b5b"],
+const defaultTheme = {
+    colors: ["#00acec", "#f45b5b", "#fefe00"], // colori serie!!
     // colors: ["#00acec", "#fefe00", "#c0c0c0", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
     // colors: ["#00acec", "#fefe00", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
     chart: {
@@ -191,9 +190,16 @@ export default () => {
     textColor: "#C0C0C0",
     contrastTextColor: "#F0F0F3",
     maskColor: "rgba(255,255,255,0.3)"
-};
+}
+
+
+export default (customTheme = {}) => {
+    
+    const theme = {...defaultTheme, ...customTheme}
+    console.log(theme)
+    Highcharts.theme = theme;
 
 // Apply the theme
-Highcharts.setOptions(Highcharts.theme);
+    Highcharts.setOptions(Highcharts.theme);
 
 }

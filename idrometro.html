@@ -565,9 +565,9 @@
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data);
+        Idrometro({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data, customTheme);
       } else {
-        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data);
+        Idrometro({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data, customTheme);
       }
     });
   </script>

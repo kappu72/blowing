@@ -251,14 +251,15 @@
   <script src="./dist/idrometro.js"></script>
   <script src="./src/ConfigIdrometri.js"></script>
   <script>
+    customTheme = {} // rimuovere per vedere effetti customTheme di configidrometri
     document.querySelector("#home").setAttribute("href", "idrometro.html?id=" + _id)
     fetch('https://navimeteoharbour.com/app/blowing/services/getStationHistoryData.php?idro=true&id='+config[st_id].id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        IdrometroHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data);
+        IdrometroHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data, customTheme);
       } else {
-        IdrometroHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data);
+        IdrometroHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data, customTheme);
       }
     });
     // Start up the app; [add server port optional topic and maxData]

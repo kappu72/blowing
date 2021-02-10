@@ -12,12 +12,12 @@ import Theme from './HighChartStyle';
 import { quotaFormatter, initSeriesIdrometro, broker } from './utils';
 
 
-window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m"}, { last = [] } = {}) => {
+window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m"}, { last = [] } = {}, customTheme = {}) => {
 
   const cleanedTopic = topic.replace("\#", '');
   const lastValue = last[0];
   const initValues = initSeriesIdrometro(last, 120, transform);
-  Theme();
+  Theme(customTheme);
 
   const IdrometroChart = createIdrometroChart({serie: { data: initValues.idrometro || [], ...chartCfg}, uom, quotaFormatter});
   if (!!lastValue) {
@@ -49,7 +49,7 @@ window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = 
   })
 }
 
-window.IdrometroHistory =  (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m"}, {history = []} = {}) => {
+window.IdrometroHistory =  (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m"}, {history = []} = {}, customTheme = {}) => {
   
   const cleanedTopic= topic.replace("\#", '');
   
@@ -68,7 +68,7 @@ window.IdrometroHistory =  (config, {topic, transform = (v) => v,  chartCfg = {}
     dateL.innerHTML = date.format(new Date(lastValue.avg[0], _format, false));
     lastH.innerHTML = quotaFormatter.format(transform(lastValue.avg[1]));
   }
-  Theme();
+  Theme(customTheme);
   createHistoryChart({serie: { data: data || [], ...chartCfg}, uom, quotaFormatter });
   const client = broker(config, topic);
   client.on("message", function (t, payload) {

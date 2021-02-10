@@ -6,7 +6,7 @@
 const Highcharts = window.Highcharts;
 
 
- export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro' }, uom = "m", quotaFormatter} ) => {
+ export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro', plotLines = [], max, min}, uom = "m", quotaFormatter} ) => {
 
     // create the IdroChart
     return  Highcharts.stockChart("windHistoryChartContainer", {
@@ -14,7 +14,6 @@ const Highcharts = window.Highcharts;
             //useUTC: false
         },
         chart: {
-            backgroundColor: 'rgba(0,0,0,0)',
             animation: {
                 duration: 200
             },
@@ -49,6 +48,9 @@ const Highcharts = window.Highcharts;
             type: 'datetime'
         },
         yAxis: [{
+            plotLines,
+            max,
+            min,
             title: {
                 text: axisTitle
             },
@@ -78,7 +80,6 @@ const Highcharts = window.Highcharts;
                 valueDecimals: 3,
                 valueSuffix: ' ' + uom
             },
-            color: '#00acec'
         }, {
             yAxis: 0,
             zIndex: 1,
@@ -88,7 +89,6 @@ const Highcharts = window.Highcharts;
                 valueDecimals: 3,
                 valueSuffix: ' ' + uom
             },
-            color: '#fe0000'
         },
         {
             yAxis: 0,
@@ -99,7 +99,6 @@ const Highcharts = window.Highcharts;
                 valueDecimals: 3,
                 valueSuffix: ' ' + uom
             },
-            color: '#fefe00'
         }],
         exporting: {
             filename: "altezza-idrometrica",

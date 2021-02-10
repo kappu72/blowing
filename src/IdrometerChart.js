@@ -5,11 +5,10 @@
 let minutesText;
     let minutes = seconds / 60;
     
-export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro' }, uom = "m", quotaFormatter }) => {
+export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Idrometro', plotLines = [], max, min} , uom = "m", quotaFormatter }) => {
     return Highcharts.chart('idrometroChartContainer', {
         
         chart: {
-            backgroundColor: 'rgba(0,0,0,0)',
             animation: {
                 duration: 200
             },
@@ -30,6 +29,9 @@ export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Id
             type: "datetime"
         },
         yAxis: [{ // first axis
+            plotLines,
+            max,
+            min,
             title: {
                 text: axisTitle
             },
@@ -53,8 +55,7 @@ export default ( { serie: { data = [], name = 'Altezza', axisTitle = 'Altezza Id
                 valueDecimals: 3,
             },
             data,
-            zIndex: 1,
-            color: '#00acec'
+            zIndex: 1
         }]
         
     });
