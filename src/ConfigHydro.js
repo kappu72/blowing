@@ -22,6 +22,24 @@ let config = {
 	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
         info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
         soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
+    },
+    st_cornua: { 
+        id: "st_cornua",
+        topic: 'device/PLUVIORETEMET/cornua/metrics/#',
+        title: "<i class='material-icons'>place</i> NCI Cape Cornwall | Real Time Wind Data",
+		titlePage: "NCI Cape Cornwall | Real Time Wind Data",       
+	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
+        info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
+    },
+    st_fasce: { 
+        id: "st_fasce",
+        topic: 'device/PLUVIORETEMET/fasce/metrics/#',
+        title: "<i class='material-icons'>place</i> NCI Cape Cornwall | Real Time Wind Data",
+		titlePage: "NCI Cape Cornwall | Real Time Wind Data",       
+	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
+        info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
     }
   }
 let parsedUrl = new URL(window.location.href);
