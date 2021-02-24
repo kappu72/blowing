@@ -8,38 +8,26 @@ let config = {
     st_19090252: { 
         id: "st_19090252",
         topic: "device/ELP001/19090252/metrics/#",
-	    title: "<i class='material-icons'>place</i> PENDENNIS SHIPYARD | Weather Station",  
-	    titlePage: "PENDENNIS SHIPYARD | Real Time Wind Data",     
-        logo: "<a href='https://pendennis.com/' target='_blank'><img src='img/pendennis.png' alt='logo customer'></a> ",             
-        info: "PENDENNIS SHIPYARD <br/>50&deg;09&#39;13&#34; N 5&deg;03&#39;09&#34; W<br/>Real Time Wind Data",
+	    title: "Pluviometro Leivi | Bacino Torrente Rupinaro",  
         soglie:  { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
     },
     st_20030132: { 
         id: "st_20030132",
         topic: "device/ELP001/20030132/metrics/#",
-        title: "<i class='material-icons'>place</i> NCI Cape Cornwall | Real Time Wind Data",
-		titlePage: "NCI Cape Cornwall | Real Time Wind Data",       
-	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
-        info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
+        title: "Pluviometro Campodonico | Bacino Torrente Rupinaro",  
         soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
     },
     st_cornua: { 
         id: "st_cornua",
         topic: 'device/PLUVIORETEMET/cornua/metrics/#',
-        title: "<i class='material-icons'>place</i> NCI Cape Cornwall | Real Time Wind Data",
-		titlePage: "NCI Cape Cornwall | Real Time Wind Data",       
-	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
-        info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
+        title: "Pluviometro Rio Fosso Grande - Bacino Torrente Nervi",   
         soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
     },
     st_fasce: { 
         id: "st_fasce",
         topic: 'device/PLUVIORETEMET/fasce/metrics/#',
-        title: "<i class='material-icons'>place</i> NCI Cape Cornwall | Real Time Wind Data",
-		titlePage: "NCI Cape Cornwall | Real Time Wind Data",       
-	    logo: "<a href='https://www.nci.org.uk/capecornwall' target='_blank'><img src='img/nci.png' alt='logo customer'></a> ", 
-        info: "CAPE CORNWALL Lookout Station <br/>50&deg;07.63&#39;N - 5&deg;42.56&#39;W<br/>Real Time Wind Data",
-        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}
+        title: "Pluviometro Rio Carega  - Bacino Torrente Nervi ",        
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}        
     }
   }
 let parsedUrl = new URL(window.location.href);
@@ -47,9 +35,10 @@ let _id = parsedUrl.searchParams.get("id") || "19090252"
 let st_id = "st_" + _id;
 st_id = config[st_id] ? st_id : "st_19090252"
 //Settings the station title
-setInnerHTML("title", _id);
-// setInnerHTML("#titlePage", config[st_id].titlePage);                    
+//setInnerHTML("title", "");
+setInnerHTML("title", config[st_id].title);                       
 // setInnerHTML("#info", config[st_id].info);
 // setInnerHTML("#logo", config[st_id].logo);       
-// setInnerHTML("#logo", config[st_id].logo);        
+// setInnerHTML("#logo", config[st_id].logo);           
       
+ 

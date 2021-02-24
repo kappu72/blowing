@@ -15,8 +15,8 @@ const config = {
     transform: (punti) => (punti / 1000) + 184.17,
     uom: 'm',
     uomLabel: '(m) s.l.m.',
-    chartCfg: { name: 'Lago Maggiore | Comune di Baveno', axisTitle: 'Livello idrometrico (m, s.l.m.)', max: 196, plotLines: [{ value: 195.5
-      ,color: 'red', width: 3, label: { text: 'Livello massimo'}}]}
+    chartCfg: { name: 'Lago Maggiore | Comune di Baveno',  axisTitle: 'Livello idrometrico (m, s.l.m.)', max: 196, plotLines: [{ value: 195.5
+      ,color: 'red', width: 3, label: { text: 'Livello esondazione a Feriolo'}}]}                 
   },
   st_sml: {
     id: "st_sml",
@@ -29,19 +29,70 @@ const config = {
     transform: (punti) => ((punti - 4686) / 1000),
     uom: 'm',
     uomLabel: '(m)',
-    chartCfg: { name: 'Torrente S.Siro Comune di Santa Margherita Ligure', axisTitle: 'Livello idrometrico (m)'}
+    chartCfg: { name: 'Torrente S.Siro Comune di Santa Margherita Ligure', axisTitle: 'Livello idrometrico (m)', max: 1.6, plotLines: [{ value: 1.5
+      ,color: 'red', width: 3, label: { text: 'Franco Idraulico test'}}]}                              
   }
 }
-// Non rimuovere al massimo mettere un oggetto vuoto
+// Non rimuovere al massimo mettere un oggetto vuoto    
 let customTheme = {
+  
   chart: {
     backgroundColor: "rgba(255, 255, 255, 1)",
-    plotBorderColor: "#000"
+    plotBorderColor: "#000"      
   },
-  colors: ["#0288d1", "#f45b5b", "#fefe00"]
+  
+  
+      subtitle: {
+        style: {
+                color: '#0288d1'             
+                   }	
+    },     
+	
+	
+	    legend: {
+
+        style: {
+                color: '#0288d1'             
+                   }	
+
+    },                 
+          
+  
+    yAxis: {
+	  alternateGridColor: "#E0F1FF",	       
+      gridLineColor: "#CCCCCC", 
+        labels: {
+            style: {
+                color: '#0288d1'             
+                   }	 
+               }	  			
+			
+    },               
+               
+	xAxis: {
+        labels: {
+            style: {
+                color: '#666666'                     
+            }
+        }
+		
+          },  		         
+			       
+
+    series: {
+          style: {
+                color: '#666666'                     
+            }                 
+    }, 
+
+
+
+  colors: ["#0288d1", "#f45b5b", "#fefe00"]         
+     
+	    
 }
-
-
+    
+          
 
 let parsedUrl = new URL(window.location.href);
 let _id = parsedUrl.searchParams.get("id") || "baveno"

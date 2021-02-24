@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="utf-8"/>
-  <title>IDROMETRO BAVENO | Real Time Wind Data </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+
+  <title id="titlePage"></title>
+
   <style>
-    body{
-      margin:0px;
-      background-color: black;
-      }
+    body {
+      margin: 0px;
+      background-color: #FFFFFF;
+	  overflow-x: hidden;     
+    }
+
+	table {   
+  border-collapse: collapse;
+  width: 100%;              
+}       
+ /*
+ td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0F1FF;  
+}     
+   
+*/      
+
+
+
+
+
     /* The navigation bar */
     .navbar {
       z-index: 9999;
@@ -56,23 +86,26 @@
     .app-container {
       padding: 2px;
       padding-top: 20px;
-      background-color: black;
+      background-color: #FFFFFF;
       display: flex;
       flex-direction: row;
       /* align-items: center; */
       width: 100vw;
       min-height: 100vh;
     }
-   
-    .fore-container, .obs-container {
-      margin:10px;
+
+    .fore-container,
+    .obs-container {
+      margin: 10px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
+
     .obs-container {
       flex: 1 1 auto;
     }
+
     .fore-container {
       flex: 1 1 auto;
     }
@@ -87,7 +120,7 @@
     }
 
 
-    .windContainer {
+    .idroContainer {
       background: transparent;
       min-width: 350px;
       /* min-height: 20px; */
@@ -97,26 +130,54 @@
 
     .wind-chart-container {
       background: transparent;
-      width: 60%;      
-      min-height: 600px;
+      width: 98%;  
+      max-height: 700px;  
       flex: 1 1 auto;
       /* display: flex; */
-      margin: 30px;
+      margin: 15px;    
     }
-    
+
+    .iconLevel {
+      margin-top: 52px;
+      font-size: 30px;
+      color: #80B1E0;
+      margin-right: 10px;
+    }
+
+    .iconData {
+      font-size: 23px;
+      color: #FFFFFF;
+      margin-right: 10px;
+    }
+
+    .iconMaxLevel {
+      margin-top: 70px;
+      font-size: 23px;
+      color: #b22222;
+      margin-right: 10px;
+    }
 
 
-  @media screen and (max-width: 700px) {
-      
+    .iconMinLevel {
+      margin-top: 30px;
+      font-size: 23px;
+      color: #F3F31A;
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 700px) {
+
       .txt {
         font-size: 15px;
       }
-      .navbar img{
+
+      .navbar img {
         width: 250px;
         object-fit: scale-down;
       }
 
-    }  
+    }
+	
 
     .windLabels {
       padding-top: 0px;
@@ -130,13 +191,13 @@
       font-size: 17px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #FFCC99; 
+      color: #FFCC99;
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
       font-variant: normal;
       text-transform: none;
-    }  
+    }
 
     .windTitle {
       font-family: "Arial Black", Gadget, sans-serif;
@@ -152,12 +213,43 @@
     }
 
 
-    .windSpeed {
+
+    .subTitle {
       font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 30px;
+      font-size: 11px;
       letter-spacing: 2px;
       word-spacing: 2px;
-      color: #00ACEC;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+	
+	
+	    .credits {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #666666;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+	  margin-right: 100px;    
+    }
+	
+	
+
+    .windSpeed {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #0288d1;    
       font-weight: normal;
       text-decoration: none;
       font-style: normal;
@@ -177,6 +269,36 @@
       font-variant: normal;
       text-transform: none;
     }
+
+
+
+    .levelMax {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #b22222;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+    .levelMin {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      word-spacing: 2px;
+      color: #FEFE00;
+      font-weight: normal;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+
+
     .data {
       font-family: "Arial Black", Gadget, sans-serif;
       font-size: 15px;
@@ -191,22 +313,23 @@
     }
 
 
-   
+
     .highcharts-range-selector-buttons txt tspan {
       color: white;
     }
-    
-    .highcharts-axis-title, .highcharts-axis-labels > text, .highcharts-legend-item > text{
+
+    .highcharts-axis-title,
+    .highcharts-axis-labels>text,
+    .highcharts-legend-item>text {
       font-size: 14px !important;
     }
-    
-    
   </style>
+
 
    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>   
 
 </head>
 
@@ -215,29 +338,104 @@
 <body>
 
 
+
+
+
   <div class="app-container">
     <div class="obs-container">
-      <div class="upperRow">
-        <div class="windContainer" style="min-width: 255px;">
+     <div class="upperRow">
+
+
+
+
+   
+
+        <div class="idroContainer" style="min-width: 255px;">
+
 
           <div class="windLabels">     
 
-              <div class="boxTitle">Dati in tempo reale <a id="home" href="idrometro_core_graph.html" >(>Home)</a></div>           
-              <div class="windTitle">Altezza Livello idrometrico <span id="uom_label">(m)</span></div>
+              <div class="boxTitle"><a id="home" href="idrometro_core_graph.html"></a></div>           
+
+           <!--    <div class="windTitle">Altezza Livello idrometrico <span id="uom_label">(m)</span></div> 
               <div class="windSpeed" id="idormetroHTLastxt"></div>
               <div style="padding-right: 20px;">
                 <div class="data" id="dataTimestamp"></div>
-              </div>
+              </div>-->    
+      
+     
+    
+    <!--         <table>
+              <tr>
+                <td>
+                  <div class="windTitle">Altezza Livello idrometrico <span id="uom_label">(m)</span></div>
+                </td>
+                <td>
+                  <div class="windSpeed" id="idormetroHTLastxt"></div>          
+                </td>
+                <td>
+                  <div class="windTitle" id="dataTimestamp"></div>
+                </td>
+              </tr>
+
+            
+
+
+			<tr>
+                <td>
+                  <div class="subTitle">Altezza Max ultime 24 ore <span id="uom_label_max">(m)</span></div>
+                </td>
+                <td>
+                  <div class="subTitle" id="maxIdroTxt"></div>
+                </td>
+                <td>
+               <div class="subTitle" id="maxDataTimestamp"></div>      
+                </td>
+              </tr>
+
+              
+			  
+			  <tr>
+               
+			   <td>
+                  <div class="subTitle">Altezza Min ultime 24 ore <span id="uom_label_min">(m)</span></div>
+                </td>
+            
+			<td>
+           <div class="subTitle" id="minIdroTxt"></div> 
+                </td>
+              
+			  <td>
+               <div class="subTitle" id="minDataTimestamp"></div>      
+                </td>
+              </tr>
+            </table>  -->
           </div>
         </div>
-
       </div>
-      <div class="wind-chart-container" id="windHistoryChartContainer"> </div>
 
-    </div>
+
+    
+    <div class="wind-chart-container" id="windHistoryChartContainer"> </div>    
+	  
+     <div class="credits">&nbsp;&nbsp;&nbsp;CREDITI : <a href="https://www.meteolivevco.it/" target="_blank">Meteolive VCO</a> | <a href="http://www.ise.cnr.it/it/vb" target="_blank">IRSA CNR</a></div>                  
+       
+    </div>  
+
+	     
+
+
+
   </div>
 
-  <script src="./dist/idrometro.js"></script>
+
+
+  </div>
+  
+  
+  
+    
+    <script src="./dist/idrometro.js"></script>
   <script src="./src/ConfigIdrometri.js"></script>
   <script>
      document.querySelector("#home").setAttribute("href", "idrometro_core_graph.html?id=" + _id)  
@@ -245,25 +443,16 @@
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
-        IdrometroHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data);
+        IdrometroHistory({ server: "wss://dev.retemet.com", options: { port: 443, rejectUnauthorized: false } }, config[st_id], data, customTheme);
       } else {
-        IdrometroHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data);
+        IdrometroHistory({ server: "ws://dev.retemet.com", options: { port: 80 } }, config[st_id], data, customTheme);          
       }
     });
     // Start up the app; [add server port optional topic and maxData]
   </script>
   
-    
-    
-    
-   
-
-
-         
-
-
-
-  </script>
+  
+  
 </body>
 
 </html>
