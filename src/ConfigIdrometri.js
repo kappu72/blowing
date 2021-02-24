@@ -31,6 +31,20 @@ const config = {
     uomLabel: '(m)',
     chartCfg: { name: 'Torrente S.Siro Comune di Santa Margherita Ligure', axisTitle: 'Livello idrometrico (m)', max: 1.6, plotLines: [{ value: 1.5
       ,color: 'red', width: 3, label: { text: 'Franco Idraulico test'}}]}                              
+  },
+  st_nervi: {
+    id: "st_sml",
+    topic: "device/TRF001/nervi/metrics/#",
+    title: "<i class='material-icons'>place</i> Torrente Nervi Idrometro | Real Time Data",
+    titlePage: "Torrente Nervi  | Genova",
+    logo: "<a href='https://www.retemet.com' target='_blank'><img src='img/retemet.png' alt='logo customer'></a> ",
+    info: "Torrente S.Siro <br/>44&deg;54&#39;N - 08&deg;30&#39;E<br/>Dati in tempo reale",
+    iframe: "https://navimeteoexternals.progestnow.com/externals/navimeteo/forecast/onehforecast?port_code=ITCHX&lat=44.312604&lng=9.320266",
+    transform: (punti) => ((punti - 4686) / 1000),
+    uom: 'm',
+    uomLabel: '(m)',
+    chartCfg: { name: 'Torrente Nervi Comune di GEnova', axisTitle: 'Livello idrometrico (m)', max: 1.6, plotLines: [{ value: 1.5
+      ,color: 'red', width: 3, label: { text: 'Franco Idraulico test'}}]}                              
   }
 }
 // Non rimuovere al massimo mettere un oggetto vuoto    
