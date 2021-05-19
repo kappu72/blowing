@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 $id = $_GET['id'];
 $idro = $_GET['idro'];
 

@@ -28,7 +28,30 @@ let config = {
         topic: 'device/PLUVIORETEMET/fasce/metrics/#',
         title: "Pluviometro Rio Carega  - Bacino Torrente Nervi ",        
         soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}        
+    },
+	
+	    st_pontori: { 
+        id: "st_pontori",
+        topic: 'device/PLUVIORETEMET/pontori/metrics/#',
+        title: "Pluviometro Prato di Pontori, NE (GE) - Bacino Torrente Garibaldo",        
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}        
+    },
+	
+	    st_mezzanego: { 
+        id: "st_mezzanego",     
+        topic: 'device/PLUVIORETEMET/mezzanego/metrics/#',
+        title: "Pluviometro S.Siro Foce, Mezzanego (GE) - Bacino Torrente Mogliana ",        
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}        
+    },
+	
+		st_casali: { 
+        id: "st_casali",
+        topic: 'device/PLUVIORETEMET/casali/metrics/#',
+        title: "Pluviometro Casali di Stibiveri, Borzonasca (GE)  - Bacino Torrente Sturla ",        
+        soglie: { m10: [6,14,19], m30: [19,29, 34], h1: [29,44,49]}             
     }
+	    
+	
   }
 let parsedUrl = new URL(window.location.href);
 let _id = parsedUrl.searchParams.get("id") || "19090252"

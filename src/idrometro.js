@@ -12,11 +12,11 @@ import Theme from './HighChartStyle';
 import { quotaFormatter, initSeriesIdrometro, broker } from './utils';
 
 
-window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m"}, { last = [] } = {}, customTheme = {}) => {
-
+window.Idrometro = (config, {topic, transform = (v) => v,  chartCfg = {}, uom = "m", timeDelta = 1}, { last = [] } = {}, customTheme = {}) => {
+  const maxInit = timeDelta === 1 ? 120 : timeDelta * 60
   const cleanedTopic = topic.replace("\#", '');
   const lastValue = last[0];
-  const initValues = initSeriesIdrometro(last, 120, transform);
+  const initValues = initSeriesIdrometro(last, maxInit, transform);
   Theme(customTheme);
 
   const IdrometroChart = createIdrometroChart({serie: { data: initValues.idrometro || [], ...chartCfg}, uom, quotaFormatter});

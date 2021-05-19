@@ -371,9 +371,9 @@ hr {
     </div>
 
 
-    <div class="fore-container">
+    <div class="fore-container"> 
       
-        <img src="https://navimeteoharbour.com/sistemi/channel_hub/global/images/falmouth_haven/sat/sat.gif"
+        <img src="https://www.navimeteoharbour.com/system/images/falmouth_haven/sat/sat.gif"
           class="imgsat" alt="sat">
       
       
@@ -391,11 +391,11 @@ hr {
   <script src="./dist/main.js"></script>
   <script src="./src/Config.js"></script>
   <script>
-    
+        
     
     document.querySelector("#history").setAttribute("href", "history.html?id=" + _id)
     document.querySelector("#ichart").setAttribute("src", config[st_id].iframe)
-    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id='+config[st_id].id).then(function (response) {
+    fetch('https://www.navimeteoharbour.com/app/blowing/services/getStationData.php?id='+config[st_id].id).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {

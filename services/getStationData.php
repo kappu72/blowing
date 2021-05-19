@@ -1,9 +1,11 @@
 <?php
-
+error_reporting(E_ERROR | E_PARSE);
 $id = $_GET['id'];
+$delta = $_GET['delta'];
+
 $url="http://dev.retemet.com:3333/station/$id/last";
 
-$data = file_get_contents($url);
+$data = file_get_contents(isset($delta) ? "$url/$delta" : $url);
 $data = $data != false ? $data : [];
 
 $dataMax = file_get_contents($url."max");

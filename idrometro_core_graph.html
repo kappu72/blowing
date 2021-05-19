@@ -432,7 +432,8 @@ tr:nth-child(even) {
   <script src="./src/ConfigIdrometri.js"></script>
   <script>
     document.querySelector("#history").setAttribute("href", "idrometro_core_history.html?id=" + _id)
-    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id=' + config[st_id].id).then(function (response) {
+    const delta = config[st_id].timeDelta || 1
+    fetch('https://navimeteoharbour.com/app/blowing/services/getStationData.php?id=' + config[st_id].id + '&delta=' + delta).then(function (response) {
       return response.json();
     }).then(function (data = []) {
       if (location.protocol === 'https:') {
